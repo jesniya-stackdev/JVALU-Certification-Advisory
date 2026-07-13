@@ -8,6 +8,7 @@ import { company, services } from '../data/content'
 // See README.md "Setting up consultation request notifications" for full setup steps.
 const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mlgqelny'
 
+
 export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', phone: '', service: '', message: '' })
   const [status, setStatus] = useState('idle') // idle | sending | success | error
