@@ -6,7 +6,7 @@ import { company, services } from '../data/content'
 
 // Formspree endpoint — replace YOUR_FORM_ID with the ID from your Formspree dashboard.
 // See README.md "Setting up consultation request notifications" for full setup steps.
-const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mlgqelny'
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mzdnzbzg'
 
 
 export default function Contact() {
