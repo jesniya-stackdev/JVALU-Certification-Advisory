@@ -3,6 +3,7 @@ import { Link, NavLink, useLocation } from 'react-router-dom'
 import { Menu, X, Phone, Search } from 'lucide-react'
 import { company, services } from '../data/content'
 import logoTeal from '../assets/logo-teal.png'
+import logoWhite from '../assets/logo-white.png'
 import AssetEvalIcon from './AssetEvalIcon'
 
 const ICV_TRACKING_URL = 'https://jesniya-stackdev.github.io/JVALU-ICV-tracking/'
@@ -33,17 +34,17 @@ export default function Navbar() {
 
   return (
     <header
-    className={`sticky top-0 z-50 w-full transition-all duration-300 ${
-  scrolled
-    ? 'bg-paper/95 backdrop-blur-md shadow-[0_1px_0_rgba(26,31,30,0.08)]'
-    : 'bg-transparent backdrop-blur-none'
-}`}
+      className={`sticky top-0 z-50 w-full transition-all duration-300 ${
+        scrolled
+          ? 'bg-paper/95 backdrop-blur-md shadow-[0_1px_0_rgba(26,31,30,0.08)]'
+          : 'bg-transparent backdrop-blur-none'
+      }`}
     >
       <div className="ledger-rule" />
       <nav className="max-w-7xl mx-auto px-5 md:px-8 flex items-center justify-between h-24 md:h-28">
         <Link to="/" className="flex items-center shrink-0 py-3 transition-transform duration-300 hover:scale-[1.02]">
           <img
-            src={logoTeal}
+            src={scrolled ? logoTeal : logoWhite}
             alt="JVALU — Certification & Evaluation"
             className="h-14 sm:h-16 md:h-20 w-auto object-contain"
           />
@@ -63,7 +64,11 @@ export default function Navbar() {
                   to={link.to}
                   className={({ isActive }) =>
                     `font-display font-semibold text-sm tracking-wide uppercase transition-colors ${
-                     isActive ? 'text-teal-300' : scrolled ? 'text-ink/70 hover:text-teal-500' : 'text-paper/90 hover:text-paper'
+                      isActive
+                        ? 'text-teal-300'
+                        : scrolled
+                        ? 'text-ink/70 hover:text-teal-500'
+                        : 'text-paper/90 hover:text-paper'
                     }`
                   }
                 >
@@ -99,7 +104,11 @@ export default function Navbar() {
                 end={link.to === '/'}
                 className={({ isActive }) =>
                   `font-display font-semibold text-sm tracking-wide uppercase transition-colors ${
-                    isActive ? 'text-teal-500' : 'text-ink/70 hover:text-teal-500'
+                    isActive
+                      ? 'text-teal-300'
+                      : scrolled
+                      ? 'text-ink/70 hover:text-teal-500'
+                      : 'text-paper/90 hover:text-paper'
                   }`
                 }
               >
@@ -114,7 +123,11 @@ export default function Navbar() {
             href={ICV_TRACKING_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-press inline-flex items-center gap-2 px-5 py-2.5 border border-teal-500 text-teal-500 text-sm font-display font-semibold tracking-wide uppercase hover:bg-sage transition-colors"
+            className={`btn-press inline-flex items-center gap-2 px-5 py-2.5 border text-sm font-display font-semibold tracking-wide uppercase transition-colors ${
+              scrolled
+                ? 'border-teal-500 text-teal-500 hover:bg-sage'
+                : 'border-paper/70 text-paper hover:bg-paper/10'
+            }`}
           >
             <Search size={16} />
             ICV Tracking
@@ -129,7 +142,7 @@ export default function Navbar() {
 
         {/* Mobile toggle */}
         <button
-          className="lg:hidden p-2 text-ink"
+          className={`lg:hidden p-2 transition-colors ${scrolled ? 'text-ink' : 'text-paper'}`}
           onClick={() => setOpen(!open)}
           aria-label={open ? 'Close menu' : 'Open menu'}
           aria-expanded={open}
