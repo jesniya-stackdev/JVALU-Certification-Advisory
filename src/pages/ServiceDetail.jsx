@@ -44,7 +44,7 @@ export default function ServiceDetail() {
           className="absolute -right-20 -top-20 w-72 h-72 rounded-full opacity-[0.08] pointer-events-none"
           style={{ background: 'radial-gradient(circle, #B8924A 0%, transparent 70%)' }}
         />
-        <div className="max-w-7xl mx-auto px-5 md:px-8 pt-16 pb-16 md:pt-20 md:pb-20 relative">
+       <div className="max-w-7xl mx-auto px-5 md:px-8 pt-36 pb-16 md:pt-44 md:pb-20 relative">
           <Reveal>
             <Link to="/services" className="inline-flex items-center gap-1 text-paper/60 hover:text-paper text-sm mb-6 transition-colors">
               ← All Services
