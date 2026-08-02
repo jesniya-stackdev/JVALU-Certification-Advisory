@@ -19,7 +19,7 @@ export default function App() {
       <ScrollProgress />
       <div className="min-h-screen flex flex-col">
         <Navbar />
-        <main className="flex-1">
+        <main className="flex-1 pt-24 md:pt-28">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
