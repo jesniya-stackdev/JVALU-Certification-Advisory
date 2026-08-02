@@ -9,7 +9,7 @@ export default function PageHeader({ eyebrow, title, subtitle }) {
         className="absolute -right-20 -top-20 w-72 h-72 rounded-full opacity-[0.08] pointer-events-none"
         style={{ background: 'radial-gradient(circle, #B8924A 0%, transparent 70%)' }}
       />
-      <div className="max-w-7xl mx-auto px-5 md:px-8 pt-16 pb-16 md:pt-20 md:pb-20 relative">
+    <div className="max-w-7xl mx-auto px-5 md:px-8 pt-36 pb-16 md:pt-44 md:pb-20 relative">
         <Reveal>
           {eyebrow && <p className="eyebrow text-bronze-400 mb-5">{eyebrow}</p>}
           <h1 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl leading-[1.1] tracking-tight max-w-2xl">
