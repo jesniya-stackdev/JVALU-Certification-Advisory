@@ -37,7 +37,7 @@ export default function Navbar() {
     className={`fixed top-0 z-50 w-full transition-all duration-300 ${
   scrolled
     ? 'bg-paper/95 backdrop-blur-md shadow-[0_1px_0_rgba(26,31,30,0.08)]'
-    : 'bg-transparent backdrop-blur-none'
+    : 'bg-paper/50 backdrop-blur-sm'
 }`}
     >
       {scrolled && <div className="ledger-rule" />}
