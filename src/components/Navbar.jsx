@@ -65,10 +65,10 @@ export default function Navbar() {
                   className={({ isActive }) =>
                     `font-display font-semibold text-sm tracking-wide uppercase transition-colors ${
                       isActive
-                        ? 'text-teal-300'
-                        : scrolled
-                        ? 'text-ink/70 hover:text-teal-500'
-                        : 'text-paper/90 hover:text-paper'
+                        ? 'text-teal-600'
+                       : scrolled
+? 'text-teal-500 hover:text-teal-700'
+: 'text-paper/90 hover:text-paper'
                     }`
                   }
                 >
@@ -107,8 +107,8 @@ export default function Navbar() {
                     isActive
                       ? 'text-teal-300'
                       : scrolled
-                      ? 'text-ink/70 hover:text-teal-500'
-                      : 'text-paper/90 hover:text-paper'
+? 'text-teal-500 hover:text-teal-700'
+: 'text-paper/90 hover:text-paper'
                   }`
                 }
               >
@@ -125,7 +125,7 @@ export default function Navbar() {
             rel="noopener noreferrer"
             className={`btn-press inline-flex items-center gap-2 px-5 py-2.5 border text-sm font-display font-semibold tracking-wide uppercase transition-colors ${
               scrolled
-                ? 'border-teal-500 text-teal-500 hover:bg-sage'
+                ? 'border-teal-600 text-teal-600 hover:bg-sage'
                 : 'border-paper/70 text-paper hover:bg-paper/10'
             }`}
           >
