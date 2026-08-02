@@ -33,9 +33,11 @@ export default function Navbar() {
 
   return (
     <header
-      className={`sticky top-0 z-50 w-full transition-shadow duration-300 bg-paper/95 backdrop-blur-md ${
-        scrolled ? 'shadow-[0_1px_0_rgba(26,31,30,0.08)]' : ''
-      }`}
+    className={`sticky top-0 z-50 w-full transition-all duration-300 ${
+  scrolled
+    ? 'bg-paper/95 backdrop-blur-md shadow-[0_1px_0_rgba(26,31,30,0.08)]'
+    : 'bg-transparent backdrop-blur-none'
+}`}
     >
       <div className="ledger-rule" />
       <nav className="max-w-7xl mx-auto px-5 md:px-8 flex items-center justify-between h-24 md:h-28">
@@ -61,7 +63,7 @@ export default function Navbar() {
                   to={link.to}
                   className={({ isActive }) =>
                     `font-display font-semibold text-sm tracking-wide uppercase transition-colors ${
-                      isActive ? 'text-teal-500' : 'text-ink/70 hover:text-teal-500'
+                     isActive ? 'text-teal-300' : scrolled ? 'text-ink/70 hover:text-teal-500' : 'text-paper/90 hover:text-paper'
                     }`
                   }
                 >
