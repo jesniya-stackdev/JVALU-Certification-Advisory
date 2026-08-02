@@ -14,7 +14,8 @@ export default function Home() {
       {/* HERO */}
       <section className="relative overflow-hidden text-paper">
         <HeroVideo />
-        <div className="max-w-7xl mx-auto px-5 md:px-8 pt-16 pb-16 md:pt-24 md:pb-24 relative">
+        {/* <div className="max-w-7xl mx-auto px-5 md:px-8 pt-16 pb-16 md:pt-24 md:pb-24 relative"> */}
+        <div className="max-w-7xl mx-auto px-5 md:px-8 pt-36 pb-16 md:pt-48 md:pb-24 relative">
           <div className="grid md:grid-cols-12 gap-12 items-end">
             <div className="md:col-span-9">
               <p className="hero-in hero-in-1 eyebrow text-bronze-400 mb-5">Abu Dhabi, United Arab Emirates</p>
