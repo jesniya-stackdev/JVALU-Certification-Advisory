@@ -34,13 +34,13 @@ export default function Navbar() {
 
   return (
     <header
-      className={`sticky top-0 z-50 w-full transition-all duration-300 ${
-        scrolled
-          ? 'bg-paper/95 backdrop-blur-md shadow-[0_1px_0_rgba(26,31,30,0.08)]'
-          : 'bg-transparent backdrop-blur-none'
-      }`}
+    className={`fixed top-0 z-50 w-full transition-all duration-300 ${
+  scrolled
+    ? 'bg-paper/95 backdrop-blur-md shadow-[0_1px_0_rgba(26,31,30,0.08)]'
+    : 'bg-transparent backdrop-blur-none'
+}`}
     >
-      <div className="ledger-rule" />
+      {scrolled && <div className="ledger-rule" />}
       <nav className="max-w-7xl mx-auto px-5 md:px-8 flex items-center justify-between h-24 md:h-28">
         <Link to="/" className="flex items-center shrink-0 py-3 transition-transform duration-300 hover:scale-[1.02]">
           <img
