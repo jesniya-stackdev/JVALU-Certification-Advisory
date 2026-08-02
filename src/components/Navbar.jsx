@@ -66,9 +66,7 @@ export default function Navbar() {
                     `font-display font-semibold text-sm tracking-wide uppercase transition-colors ${
                       isActive
                         ? 'text-teal-600'
-                       : scrolled
-? 'text-teal-500 hover:text-teal-700'
-: 'text-paper/90 hover:text-paper'
+                       : 'text-teal-500 hover:text-teal-700'
                     }`
                   }
                 >
@@ -106,9 +104,7 @@ export default function Navbar() {
                   `font-display font-semibold text-sm tracking-wide uppercase transition-colors ${
                     isActive
                       ? 'text-teal-300'
-                      : scrolled
-? 'text-teal-500 hover:text-teal-700'
-: 'text-paper/90 hover:text-paper'
+                      : 'text-teal-500 hover:text-teal-700'
                   }`
                 }
               >
@@ -123,11 +119,7 @@ export default function Navbar() {
             href={ICV_TRACKING_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className={`btn-press inline-flex items-center gap-2 px-5 py-2.5 border text-sm font-display font-semibold tracking-wide uppercase transition-colors ${
-              scrolled
-                ? 'border-teal-600 text-teal-600 hover:bg-sage'
-                : 'border-paper/70 text-paper hover:bg-paper/10'
-            }`}
+           className="btn-press inline-flex items-center gap-2 px-5 py-2.5 border border-teal-600 text-teal-600 text-sm font-display font-semibold tracking-wide uppercase hover:bg-sage transition-colors"
           >
             <Search size={16} />
             ICV Tracking
@@ -142,7 +134,7 @@ export default function Navbar() {
 
         {/* Mobile toggle */}
         <button
-          className={`lg:hidden p-2 transition-colors ${scrolled ? 'text-ink' : 'text-paper'}`}
+          className="lg:hidden p-2 transition-colors text-teal-500"
           onClick={() => setOpen(!open)}
           aria-label={open ? 'Close menu' : 'Open menu'}
           aria-expanded={open}
