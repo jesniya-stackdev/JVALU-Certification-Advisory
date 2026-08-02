@@ -44,7 +44,7 @@ export default function Navbar() {
       <nav className="max-w-7xl mx-auto px-5 md:px-8 flex items-center justify-between h-24 md:h-28">
         <Link to="/" className="flex items-center shrink-0 py-3 transition-transform duration-300 hover:scale-[1.02]">
           <img
-            src={scrolled ? logoTeal : logoWhite}
+            src={logoTeal}
             alt="JVALU — Certification & Evaluation"
             className="h-14 sm:h-16 md:h-20 w-auto object-contain"
           />
@@ -103,7 +103,7 @@ export default function Navbar() {
                 className={({ isActive }) =>
                   `font-display font-semibold text-sm tracking-wide uppercase transition-colors ${
                     isActive
-                      ? 'text-teal-300'
+                      ? 'text-teal-700'
                       : 'text-teal-500 hover:text-teal-700'
                   }`
                 }
