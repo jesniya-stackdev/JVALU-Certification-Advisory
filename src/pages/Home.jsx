@@ -7,15 +7,19 @@ import CountUp from '../components/CountUp'
 import HeroVideo from '../components/HeroVideo'
 import PartnersMarquee from '../components/PartnersMarquee'
 import AssetEvalIcon from '../components/AssetEvalIcon'
+import Seo from '../components/Seo'
 
 export default function Home() {
   return (
     <div>
+      <Seo
+        title="JVALU | ICV, ISO & ADNOC Certification Consultancy — Abu Dhabi"
+        description="JVALU is a UAE-based consultancy specializing in ICV Certification, ISO Certification, Asset Evaluation, and ADNOC Vendor Registration. Based in Abu Dhabi."
+      />
       {/* HERO */}
       <section className="relative overflow-hidden text-paper">
         <HeroVideo />
-        {/* <div className="max-w-7xl mx-auto px-5 md:px-8 pt-16 pb-16 md:pt-24 md:pb-24 relative"> */}
-        <div className="max-w-7xl mx-auto px-5 md:px-8 pt-36 pb-16 md:pt-48 md:pb-24 relative">
+        <div className="max-w-7xl mx-auto px-5 md:px-8 pt-28 pb-10 md:pt-36 md:pb-14 relative">
           <div className="grid md:grid-cols-12 gap-12 items-end">
             <div className="md:col-span-9">
               <p className="hero-in hero-in-1 eyebrow text-bronze-400 mb-5">Abu Dhabi, United Arab Emirates</p>
@@ -43,7 +47,7 @@ export default function Home() {
           </div>
 
           {/* Stats row — alive, counts up on first view */}
-          <div className="hero-in hero-in-4 mt-14 md:mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 pt-10 border-t border-paper/15">
+          <div className="hero-in hero-in-4 mt-10 md:mt-12 grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 pt-7 md:pt-8 border-t border-paper/15">
             {stats.map((s) => (
               <div key={s.label}>
                 <p className="font-display font-extrabold text-3xl md:text-4xl text-paper">

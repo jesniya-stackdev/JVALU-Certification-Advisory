@@ -6,7 +6,7 @@ import logoTeal from '../assets/logo-teal.png'
 import logoWhite from '../assets/logo-white.png'
 import AssetEvalIcon from './AssetEvalIcon'
 
-const ICV_TRACKING_URL = 'https://github.com/jesniya-stackdev/JVALU-ICV-web'
+const ICV_TRACKING_URL = 'https://jvalu-icv-web.vercel.app/'
 
 const navLinks = [
   { to: '/', label: 'Home' },

@@ -4,11 +4,16 @@ import { ArrowRight, ArrowUpRight } from 'lucide-react'
 import PageHeader from '../components/PageHeader'
 import Reveal from '../components/Reveal'
 import AssetEvalIcon from '../components/AssetEvalIcon'
+import Seo from '../components/Seo'
 import { services, company } from '../data/content'
 
 export default function Services() {
   return (
     <div>
+      <Seo
+        title="Our Services | ICV, ISO, Asset Evaluation & ADNOC Registration — JVALU"
+        description="Explore JVALU's certification and evaluation services: ICV Certification, ISO Certification, Asset Evaluation, and ADNOC Vendor Registration in the UAE."
+      />
       <PageHeader
         eyebrow="Our Services"
         title="Certification &amp; Evaluation Services"

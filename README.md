@@ -136,26 +136,70 @@ Once registered, point the domain's DNS to whichever host you choose (Vercel/Net
 - [ ] Replace placeholder "Who We Are", mission/vision, and FAQ copy with content reviewed by your team, if you'd like changes
 - [ ] Confirm the office address pin on the Contact page map is accurate (currently set from the address you provided)
 - [ ] Add real client logos / testimonials if available (currently not included)
-- [ ] **Required:** activate the contact form's Formspree endpoint so consultation requests actually email you — see "Setting up consultation request notifications" below. Until you do this, submissions fall back to opening the visitor's own email app.
+- [ ] **Required:** deploy and configure the `server/` contact API with your real Zoho app password — see "Setting up consultation request emails (Zoho SMTP)" below. Until you do this, submissions fall back to opening the visitor's own email app.
 - [ ] Register a domain (e.g. `jvalu.ae`) if you don't already have one
 - [ ] Set up Google Business Profile + Google Search Console once live, for local SEO in Abu Dhabi
 - [ ] Confirm you have commercial usage rights for any photos/video you add to the hero carousel (currently using designed graphics, no photos, to avoid licensing issues)
 
-### Setting up consultation request notifications (Formspree)
+### Setting up consultation request emails (Zoho SMTP)
 
-The contact form is wired to send submissions to your email automatically using [Formspree](https://formspree.io) — a free service (50 submissions/month on the free tier) that requires no backend code. Right now it's pointed at a placeholder, so **you need to activate it before going live**:
+The contact form posts to a small standalone Node/Express API in `server/`, which sends the email directly through your Zoho Mail account using SMTP — no third-party form service involved. This is built for a self-managed VPS (e.g. Contabo), so you run it as its own process alongside the built frontend.
 
-1. Go to [formspree.io](https://formspree.io) and create a free account using `support@jvalu.ae` (or whichever inbox should receive consultation requests).
-2. Click **New Form**, name it something like "JVALU Website Consultation Requests".
-3. Formspree will give you an endpoint URL that looks like `https://formspree.io/f/abcd1234`.
-4. Open `src/pages/Contact.jsx` in this project, find this line near the top:
-   ```js
-   const FORMSPREE_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID'
+**1. Create a Zoho App Password** (not your normal Zoho login password):
+   - Sign in to [Zoho Mail](https://mail.zoho.com), go to **Account Settings → Security → App Passwords**.
+   - Generate a new app password for "JVALU Website" and copy it — Zoho only shows it once.
+
+**2. Configure the server:**
+   ```bash
+   cd server
+   npm install
+   cp .env.example .env
    ```
-5. Replace `YOUR_FORM_ID` with your actual form ID from step 3.
-6. Save the file, rebuild (`npm run build`), and redeploy.
-7. Submit a test enquiry on your live site — Formspree will send a confirmation email the first time, and from then on every submission emails you directly.
+   Edit `server/.env`:
+   ```
+   ZOHO_EMAIL=support@jvalu.ae
+   ZOHO_APP_PASSWORD=<the app password from step 1>
+   CONTACT_TO_EMAIL=support@jvalu.ae
+   PORT=4000
+   ALLOWED_ORIGIN=https://jvalu.ae
+   ```
+   `server/.env` is gitignored — never commit real credentials.
 
-**If the form fails for any reason** (Formspree down, wrong ID, no internet), the site automatically falls back to opening the visitor's email app with their message pre-filled to `support@jvalu.ae`, so an enquiry is never silently lost.
+**3. Run it as a persistent process on your Contabo VPS** (recommended: [pm2](https://pm2.keymetrics.io/)):
+   ```bash
+   npm install -g pm2
+   cd server
+   pm2 start index.js --name jvalu-contact-api
+   pm2 save
+   pm2 startup   # follow the printed instructions to survive reboots
+   ```
 
-**On WhatsApp notifications:** automatically sending a WhatsApp message to your business number on every form submission requires a paid automation service (e.g. Twilio WhatsApp API, or a Zapier/Make.com integration connected to Formspree) since browsers can't silently send WhatsApp messages on your behalf. If you want this set up, let me know and I can wire Formspree up to a Zapier "send WhatsApp message" step — Zapier has a free tier that may cover light usage.
+**4. Reverse-proxy `/api` to the Node process** so the frontend's same-origin `fetch('/api/contact')` call reaches it. Example Nginx server block (adjust to your actual site config):
+   ```nginx
+   server {
+     listen 80;
+     server_name jvalu.ae www.jvalu.ae;
+
+     root /var/www/jvalu/dist;   # the built frontend (npm run build output)
+     index index.html;
+
+     location /api/ {
+       proxy_pass http://127.0.0.1:4000;
+       proxy_set_header Host $host;
+       proxy_set_header X-Real-IP $remote_addr;
+     }
+
+     location / {
+       try_files $uri /index.html;   # SPA fallback for client-side routing
+     }
+   }
+   ```
+   Then set up HTTPS (e.g. `certbot --nginx`) — required for the contact form to work reliably, since browsers block mixed HTTP/HTTPS requests.
+
+**5. Test it:** submit the contact form on your live site and confirm the email lands in `support@jvalu.ae`.
+
+**If the API is unreachable for any reason** (server down, network issue), the site automatically falls back to opening the visitor's email app with their message pre-filled to `support@jvalu.ae`, so an enquiry is never silently lost.
+
+If the frontend and API end up on different origins/domains, set `VITE_CONTACT_API_URL` (e.g. in a root `.env` file, `VITE_CONTACT_API_URL=https://api.jvalu.ae/api/contact`) before running `npm run build`, and make sure `ALLOWED_ORIGIN` in `server/.env` matches the frontend's origin.
+
+**On WhatsApp notifications:** automatically sending a WhatsApp message to your business number on every form submission requires a paid automation service (e.g. Twilio WhatsApp API) since browsers/servers can't silently send WhatsApp messages without one. Let me know if you want this wired up alongside the email.

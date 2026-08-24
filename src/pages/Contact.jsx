@@ -2,12 +2,13 @@ import React, { useState } from 'react'
 import { Phone, Mail, MapPin, MessageCircle, Send, CheckCircle2, AlertCircle, Loader2 } from 'lucide-react'
 import PageHeader from '../components/PageHeader'
 import Reveal from '../components/Reveal'
+import Seo from '../components/Seo'
 import { company, services } from '../data/content'
 
-// Formspree endpoint — replace YOUR_FORM_ID with the ID from your Formspree dashboard.
-// See README.md "Setting up consultation request notifications" for full setup steps.
-const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mzdnzbzg'
-
+// Points at the standalone Node/Express API in server/ that sends mail via Zoho SMTP.
+// Set VITE_CONTACT_API_URL in a .env file (e.g. https://jvalu.ae/api/contact) if the API
+// isn't reachable at a same-origin /api/contact path. See server/README or root README for setup.
+const CONTACT_API_ENDPOINT = import.meta.env.VITE_CONTACT_API_URL || '/api/contact'
 
 export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', phone: '', service: '', message: '' })
@@ -22,16 +23,15 @@ export default function Contact() {
     setStatus('sending')
 
     try {
-      const response = await fetch(FORMSPREE_ENDPOINT, {
+      const response = await fetch(CONTACT_API_ENDPOINT, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           name: form.name,
           email: form.email,
           phone: form.phone,
           service: form.service || 'General Enquiry',
           message: form.message,
-          _subject: `New Consultation Request — ${form.service || 'General Enquiry'}`,
         }),
       })
 
@@ -53,6 +53,10 @@ export default function Contact() {
 
   return (
     <div>
+      <Seo
+        title="Contact Us | JVALU — Abu Dhabi Certification Consultancy"
+        description="Get in touch with JVALU for ICV Certification, ISO Certification, Asset Evaluation, and ADNOC Vendor Registration support in Abu Dhabi, UAE."
+      />
       <PageHeader
         eyebrow="Get In Touch"
         title="Contact Us"

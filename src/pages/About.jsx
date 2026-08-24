@@ -3,11 +3,16 @@ import { Link } from 'react-router-dom'
 import { ArrowRight, Target, Eye, Award } from 'lucide-react'
 import Reveal from '../components/Reveal'
 import PageHeader from '../components/PageHeader'
+import Seo from '../components/Seo'
 import { whyChooseUs } from '../data/content'
 
 export default function About() {
   return (
     <div>
+      <Seo
+        title="About Us | JVALU — UAE Certification & Compliance Consultancy"
+        description="Learn about JVALU, a UAE-based consultancy helping businesses achieve ICV, ISO, Asset Evaluation, and ADNOC certification with direct communication and end-to-end support."
+      />
       <PageHeader eyebrow="About JVALU" title="Who We Are" subtitle="A UAE-based consultancy built around one goal: making certification and compliance straightforward for the businesses we work with." />
 
       <section className="py-20 md:py-24">

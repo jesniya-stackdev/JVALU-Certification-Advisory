@@ -3,6 +3,7 @@ import { useParams, Link, Navigate } from 'react-router-dom'
 import { ArrowRight, ArrowUpRight, ChevronDown } from 'lucide-react'
 import Reveal from '../components/Reveal'
 import AssetEvalIcon from '../components/AssetEvalIcon'
+import Seo from '../components/Seo'
 import { services, company } from '../data/content'
 
 function FaqItem({ q, a, defaultOpen = false }) {
@@ -37,6 +38,10 @@ export default function ServiceDetail() {
 
   return (
     <div>
+      <Seo
+        title={`${service.name} | JVALU Certification & Evaluation`}
+        description={service.summary}
+      />
       {/* HEADER */}
       <section className="relative overflow-hidden bg-teal-700 text-paper">
         <div className="absolute inset-0 bg-noise pointer-events-none" />

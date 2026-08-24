@@ -1,10 +1,16 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
+import Seo from '../components/Seo'
 
 export default function NotFound() {
   return (
     <div className="min-h-[60vh] flex items-center justify-center">
+      <Seo
+        title="Page Not Found | JVALU"
+        description="The page you're looking for doesn't exist or may have moved."
+        noIndex
+      />
       <div className="text-center px-5">
         <p className="eyebrow text-bronze-600 mb-4">File Not Found</p>
         <h1 className="font-display font-extrabold text-5xl text-teal-700">404</h1>
