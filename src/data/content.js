@@ -55,7 +55,7 @@ export const services = [
       {
         title: 'Annual Renewal',
         detail:
-          'ICV certificates are valid for one year. We track your renewal date and manage the re-certification process.',
+          'ICV certificates are valid for 14 months. We track your renewal date and manage the re-certification process.',
       },
     ],
     faqs: [
