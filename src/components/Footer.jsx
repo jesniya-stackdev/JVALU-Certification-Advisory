@@ -73,7 +73,7 @@ export default function Footer() {
           <p className="text-xs text-paper/50">© {new Date().getFullYear()} JVALU Certification & Evaluation. All rights reserved.</p>
           <div className="flex items-center gap-3">
             
-             <a href="https://instagram.com/jvalu"
+             <a href="https://www.instagram.com/jvalucertification/"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Instagram"
@@ -86,7 +86,7 @@ export default function Footer() {
               </svg>
             </a>
             
-              <a href="https://www.linkedin.com/in/jvalu-icv-804324404"
+              <a href="https://www.linkedin.com/in/jvalu-certifications-153b18427"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn"
@@ -99,7 +99,7 @@ export default function Footer() {
               </svg>
             </a>
             
-              <a href="https://facebook.com/jvalu"
+              <a href="https://www.facebook.com/profile.php?id=61593094522458"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Facebook"
