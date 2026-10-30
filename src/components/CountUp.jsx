@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 
-export default function CountUp({ to, suffix = '', duration = 1400, className = '' }) {
+export default function CountUp({ to, suffix = '', duration = 3200, className = '' }) {
   const ref = useRef(null)
   const [value, setValue] = useState(0)
   const started = useRef(false)
@@ -15,7 +15,7 @@ export default function CountUp({ to, suffix = '', duration = 1400, className = 
           const start = performance.now()
           const animate = (now) => {
             const progress = Math.min((now - start) / duration, 1)
-            const eased = 1 - Math.pow(1 - progress, 3)
+            const eased = -(Math.cos(Math.PI * progress) - 1) / 2
             setValue(Math.round(eased * to))
             if (progress < 1) requestAnimationFrame(animate)
           }
