@@ -12,7 +12,13 @@ export const company = {
   phoneRaw: '971507729382',
   whatsappLink: 'https://wa.me/971507729382',
   telLink: 'tel:+971507729382',
-  mailLink: 'mailto:support@jvalu.ae',
+  mailLink:
+    'mailto:support@jvalu.ae?subject=' +
+    encodeURIComponent('Enquiry from JVALU website') +
+    '&body=' +
+    encodeURIComponent(
+      'Hello JVALU team,\n\nI found your website and would like to discuss how you can support my business. Please find my details below.\n\nFull name:\nCompany name:\nPhone / WhatsApp:\nService of interest (ICV Certification, ISO Certification, Asset Evaluation, ADNOC Vendor Registration):\n\nBrief description of my requirement:\n\n\nI would appreciate it if you could get back to me with the next steps and any documents you need from my side.\n\nThank you and best regards,'
+    ),
   address: {
     line1: 'Al Wahda Commercial Tower, 1st Floor, Office 101',
     line2: 'Abu Dhabi, United Arab Emirates',
