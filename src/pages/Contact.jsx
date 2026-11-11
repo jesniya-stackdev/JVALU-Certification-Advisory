@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { Phone, Mail, MapPin, MessageCircle, Send, CheckCircle2, AlertCircle, Loader2 } from 'lucide-react'
 import PageHeader from '../components/PageHeader'
 import Reveal from '../components/Reveal'
@@ -13,6 +14,14 @@ const CONTACT_API_ENDPOINT = import.meta.env.VITE_CONTACT_API_URL || '/api/conta
 export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', phone: '', service: '', message: '' })
   const [status, setStatus] = useState('idle') // idle | sending | success | error
+  const navigate = useNavigate()
+
+  // After the enquiry is sent (or the email app is opened), return to the home page.
+  useEffect(() => {
+    if (status !== 'success' && status !== 'error') return
+    const timer = setTimeout(() => navigate('/'), status === 'success' ? 4000 : 6000)
+    return () => clearTimeout(timer)
+  }, [status, navigate])
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value })
@@ -46,7 +55,9 @@ export default function Contact() {
       const body = encodeURIComponent(
         `Name: ${form.name}\nEmail: ${form.email}\nPhone: ${form.phone}\nService of interest: ${form.service}\n\nMessage:\n${form.message}`
       )
-      window.location.href = `mailto:${company.email}?subject=${subject}&body=${body}`
+      const mailtoUrl = `mailto:${company.email}?subject=${subject}&body=${body}`
+      // Open in a new tab so the website isn't replaced by a webmail page.
+      if (!window.open(mailtoUrl, '_blank')) window.location.href = mailtoUrl
       setStatus('error')
     }
   }
@@ -100,6 +111,8 @@ export default function Contact() {
             <Reveal delay={120}>
               <a
                 href={company.mailLink}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="lift-card flex items-start gap-4 bg-white border border-teal-500/12 p-6 hover:border-teal-500/40"
               >
                 <div className="shrink-0 w-11 h-11 rounded-full bg-sage flex items-center justify-center">
@@ -138,6 +151,7 @@ export default function Contact() {
                       Our team will get back to you shortly. If it's urgent, you can also reach us directly on{' '}
                       <a href={company.whatsappLink} target="_blank" rel="noopener noreferrer" className="text-teal-500 underline">WhatsApp</a>.
                     </p>
+                    <p className="text-ink/50 text-xs mt-4">Taking you back to the home page…</p>
                     <button
                       onClick={() => { setStatus('idle'); setForm({ name: '', email: '', phone: '', service: '', message: '' }) }}
                       className="mt-6 text-teal-500 font-display font-semibold text-sm uppercase tracking-wide hover:text-teal-600"
@@ -151,8 +165,9 @@ export default function Contact() {
                     <h3 className="font-display font-bold text-xl text-teal-700">Your email app should now be open</h3>
                     <p className="text-ink/65 text-sm mt-2 max-w-sm mx-auto">
                       We couldn't reach our online form, so we've opened your email app with your message pre-filled instead. If it didn't open, email us directly at{' '}
-                      <a href={company.mailLink} className="text-teal-500 underline">{company.email}</a>.
+                      <a href={company.mailLink} target="_blank" rel="noopener noreferrer" className="text-teal-500 underline">{company.email}</a>.
                     </p>
+                    <p className="text-ink/50 text-xs mt-4">Taking you back to the home page shortly…</p>
                     <button
                       onClick={() => setStatus('idle')}
                       className="mt-6 text-teal-500 font-display font-semibold text-sm uppercase tracking-wide hover:text-teal-600"

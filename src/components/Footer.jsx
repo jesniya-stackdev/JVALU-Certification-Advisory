@@ -56,7 +56,7 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href={company.mailLink} className="flex items-start gap-2 text-paper/75 hover:text-paper transition-colors break-all">
+                <a href={company.mailLink} target="_blank" rel="noopener noreferrer" className="flex items-start gap-2 text-paper/75 hover:text-paper transition-colors break-all">
                   <Mail size={15} className="mt-0.5 shrink-0" />
                   <span>{company.email}</span>
                 </a>
