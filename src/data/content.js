@@ -185,6 +185,19 @@ export const services = [
     logo: adnocLogo,
     name: 'ADNOC Vendor Registration',
     shortName: 'ADNOC Registration',
+    highlights: [
+      { title: '5 steps', detail: 'Eligibility to activation' },
+      { title: 'Multi-category', detail: 'Register under several scopes' },
+      { title: 'Group tenders', detail: 'ADNOC and group companies' },
+    ],
+    documents: [
+      'Valid trade license',
+      'Company profile',
+      'Financial statements',
+      'ICV certificate',
+      'ISO and quality certificates',
+      'Bank and tax documents',
+    ],
     summary:
       'Guidance through the ADNOC supplier registration process, documentation, and prequalification so you can participate in tenders.',
     description:

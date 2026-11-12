@@ -1,31 +1,12 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useParams, Link, Navigate } from 'react-router-dom'
-import { ArrowRight, ArrowUpRight, ChevronDown } from 'lucide-react'
+import { ArrowRight, ArrowUpRight } from 'lucide-react'
 import Reveal from '../components/Reveal'
 import AssetEvalIcon from '../components/AssetEvalIcon'
+import FaqItem from '../components/FaqItem'
 import Seo from '../components/Seo'
+import { AdnocHero, AdnocJourney, AdnocDocuments } from '../components/AdnocSections'
 import { services, company } from '../data/content'
-
-function FaqItem({ q, a, defaultOpen = false }) {
-  const [open, setOpen] = useState(defaultOpen)
-  return (
-    <div className="border-b border-teal-500/12 py-5">
-      <button
-        onClick={() => setOpen(!open)}
-        className="w-full flex items-center justify-between gap-4 text-left group"
-        aria-expanded={open}
-      >
-        <span className="font-display font-semibold text-base text-teal-700 group-hover:text-teal-500 transition-colors">{q}</span>
-        <ChevronDown size={20} className={`shrink-0 text-bronze-500 transition-transform duration-200 ${open ? 'rotate-180' : ''}`} />
-      </button>
-      <div className={`grid transition-all duration-300 ease-in-out ${open ? 'grid-rows-[1fr] opacity-100 mt-3' : 'grid-rows-[0fr] opacity-0'}`}>
-        <div className="overflow-hidden">
-          <p className="text-ink/65 leading-relaxed text-sm">{a}</p>
-        </div>
-      </div>
-    </div>
-  )
-}
 
 export default function ServiceDetail() {
   const { slug } = useParams()
@@ -35,6 +16,7 @@ export default function ServiceDetail() {
 
   const currentIndex = services.findIndex((s) => s.slug === slug)
   const next = services[(currentIndex + 1) % services.length]
+  const isAdnoc = slug === 'adnoc-vendor-registration'
 
   return (
     <div>
@@ -43,6 +25,7 @@ export default function ServiceDetail() {
         description={service.summary}
       />
       {/* HEADER */}
+      {isAdnoc ? <AdnocHero service={service} /> : (
       <section className="relative overflow-hidden bg-teal-700 text-paper">
         <div className="absolute inset-0 bg-noise pointer-events-none" />
         <div
@@ -74,6 +57,7 @@ export default function ServiceDetail() {
         </div>
         <div className="h-px bg-paper/10" />
       </section>
+      )}
 
       {/* OVERVIEW + WHO FOR */}
       <section className="py-20 md:py-24">
@@ -96,6 +80,12 @@ export default function ServiceDetail() {
       </section>
 
       {/* PROCESS */}
+      {isAdnoc ? (
+        <>
+          <AdnocJourney service={service} />
+          <AdnocDocuments service={service} />
+        </>
+      ) : (
       <section className="py-20 md:py-24 bg-sage/60">
         <div className="max-w-7xl mx-auto px-5 md:px-8">
           <Reveal>
@@ -122,6 +112,7 @@ export default function ServiceDetail() {
           </div>
         </div>
       </section>
+      )}
 
       {/* FAQ */}
       <section className="py-20 md:py-24">

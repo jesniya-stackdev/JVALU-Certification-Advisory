@@ -185,3 +185,9 @@ select:focus-visible {
     animation: none;
   }
 }
+
+/* ADNOC service page hero: fade the left of the photo into the mint background */
+.adnoc-photo-mask {
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, transparent 51%, #000 64%);
+  mask-image: linear-gradient(90deg, transparent 0%, transparent 51%, #000 64%);
+}
