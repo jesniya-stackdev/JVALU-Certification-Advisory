@@ -4,7 +4,7 @@ import { Menu, X, Phone, Search } from 'lucide-react'
 import { company, services } from '../data/content'
 import logoTeal from '../assets/logo-teal.png'
 import logoWhite from '../assets/logo-white.png'
-import AssetEvalIcon from './AssetEvalIcon'
+import ServiceIcon from './ServiceIcon'
 
 const ICV_TRACKING_URL = 'https://jvalu-icv-web.vercel.app/'
 
@@ -87,7 +87,7 @@ export default function Navbar() {
                         {s.logo ? (
                           <img src={s.logo} alt="" className="w-6 h-6 object-contain shrink-0" />
                         ) : (
-                          <AssetEvalIcon size={20} className="text-teal-600 shrink-0" />
+                          <ServiceIcon slug={s.slug} size={20} className="text-teal-600 shrink-0" />
                         )}
                         <span className="text-sm font-medium text-ink">{s.name}</span>
                       </Link>

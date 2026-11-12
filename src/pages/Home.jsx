@@ -6,7 +6,7 @@ import Reveal from '../components/Reveal'
 import CountUp from '../components/CountUp'
 import HeroVideo from '../components/HeroVideo'
 import PartnersMarquee from '../components/PartnersMarquee'
-import AssetEvalIcon from '../components/AssetEvalIcon'
+import ServiceIcon from '../components/ServiceIcon'
 import Seo from '../components/Seo'
 
 export default function Home() {
@@ -27,7 +27,7 @@ export default function Home() {
                 Empowering Businesses Through Compliance &amp; Certification Excellence
               </h1>
               <p className="hero-in hero-in-3 mt-6 text-paper/80 text-lg leading-relaxed max-w-xl">
-                {company.name} provides professional consultancy services for ICV Certification, ISO Management Systems, Asset Evaluation, and ADNOC Vendor Registration across the UAE.
+                {company.name} provides professional consultancy services for ICV Certification, ISO Management Systems, Asset Evaluation, ADNOC Vendor Registration, and Classification across the UAE.
               </p>
               <div className="hero-in hero-in-4 mt-9 flex flex-col sm:flex-row gap-4">
                 <Link
@@ -163,7 +163,7 @@ export default function Home() {
               <div>
                 <p className="eyebrow text-bronze-600 mb-4">Our Services</p>
                 <h2 className="font-display font-bold text-3xl md:text-[2.4rem] leading-tight text-teal-700 max-w-xl">
-                  Four certifications. One point of contact.
+                  One team. One point of contact.
                 </h2>
               </div>
               <Link
@@ -177,7 +177,11 @@ export default function Home() {
 
           <div className="grid sm:grid-cols-2 gap-5">
             {services.map((s, i) => (
-              <Reveal key={s.slug} delay={i * 80}>
+              <Reveal
+                key={s.slug}
+                delay={i * 80}
+                className={i === services.length - 1 && services.length % 2 === 1 ? 'sm:col-span-2' : ''}
+              >
                 <Link
                   to={`/services/${s.slug}`}
                   className="lift-card group block bg-white border border-teal-500/12 p-7 md:p-8 hover:border-teal-500/40 h-full stamp-mark"
@@ -187,7 +191,7 @@ export default function Home() {
                       {s.logo ? (
                         <img src={s.logo} alt="" className="w-full h-full object-contain" />
                       ) : (
-                        <AssetEvalIcon size={22} className="text-teal-600" />
+                        <ServiceIcon slug={s.slug} size={22} className="text-teal-600" />
                       )}
                     </div>
                     <ArrowUpRight size={18} className="text-teal-500/40 group-hover:text-teal-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />

@@ -2,10 +2,12 @@ import React from 'react'
 import { useParams, Link, Navigate } from 'react-router-dom'
 import { ArrowRight, ArrowUpRight } from 'lucide-react'
 import Reveal from '../components/Reveal'
-import AssetEvalIcon from '../components/AssetEvalIcon'
+import ServiceIcon from '../components/ServiceIcon'
 import FaqItem from '../components/FaqItem'
 import Seo from '../components/Seo'
-import { AdnocHero, AdnocJourney, AdnocDocuments } from '../components/AdnocSections'
+import { AdnocHero, AdnocJourney } from '../components/AdnocSections'
+import CaseStudiesHero from '../components/CaseStudiesHero'
+import { HighlightsStrip, ChecklistSection, ApproachSection } from '../components/ServiceBlocks'
 import { services, company } from '../data/content'
 
 export default function ServiceDetail() {
@@ -17,15 +19,16 @@ export default function ServiceDetail() {
   const currentIndex = services.findIndex((s) => s.slug === slug)
   const next = services[(currentIndex + 1) % services.length]
   const isAdnoc = slug === 'adnoc-vendor-registration'
+  const isCaseStudies = slug === 'case-studies'
 
   return (
     <div>
       <Seo
-        title={`${service.name} | JVALU Certification & Evaluation`}
-        description={service.summary}
+        title={service.seoTitle || `${service.name} | JVALU Certification & Evaluation`}
+        description={service.seoDescription || service.summary}
       />
       {/* HEADER */}
-      {isAdnoc ? <AdnocHero service={service} /> : (
+      {isAdnoc ? <AdnocHero service={service} /> : isCaseStudies ? <CaseStudiesHero service={service} /> : (
       <section className="relative overflow-hidden bg-teal-700 text-paper">
         <div className="absolute inset-0 bg-noise pointer-events-none" />
         <div
@@ -39,7 +42,7 @@ export default function ServiceDetail() {
             </Link>
             <div className="flex items-start justify-between gap-8 flex-wrap">
               <div>
-                <p className="eyebrow text-bronze-400 mb-5">{service.shortName} · Certification &amp; Compliance</p>
+                <p className="eyebrow text-bronze-400 mb-5">{service.eyebrow || `${service.shortName} · Certification & Compliance`}</p>
                 <h1 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl leading-[1.1] tracking-tight max-w-2xl">
                   {service.name}
                 </h1>
@@ -49,7 +52,7 @@ export default function ServiceDetail() {
                 {service.logo ? (
                   <img src={service.logo} alt={`${service.name} logo`} className="w-full h-full object-contain" />
                 ) : (
-                  <AssetEvalIcon size={48} className="text-teal-600" />
+                  <ServiceIcon slug={service.slug} size={48} className="text-teal-600" />
                 )}
               </div>
             </div>
@@ -58,6 +61,7 @@ export default function ServiceDetail() {
         <div className="h-px bg-paper/10" />
       </section>
       )}
+      {!isAdnoc && service.highlights && <HighlightsStrip items={service.highlights} />}
 
       {/* OVERVIEW + WHO FOR */}
       <section className="py-20 md:py-24">
@@ -81,11 +85,8 @@ export default function ServiceDetail() {
 
       {/* PROCESS */}
       {isAdnoc ? (
-        <>
-          <AdnocJourney service={service} />
-          <AdnocDocuments service={service} />
-        </>
-      ) : (
+        <AdnocJourney service={service} />
+      ) : service.process && (
       <section className="py-20 md:py-24 bg-sage/60">
         <div className="max-w-7xl mx-auto px-5 md:px-8">
           <Reveal>
@@ -114,7 +115,12 @@ export default function ServiceDetail() {
       </section>
       )}
 
+      {service.checklist && <ChecklistSection {...service.checklist} />}
+
+      {service.approach && <ApproachSection approach={service.approach} categories={service.categories} />}
+
       {/* FAQ */}
+      {service.faqs && (
       <section className="py-20 md:py-24">
         <div className="max-w-7xl mx-auto px-5 md:px-8 grid md:grid-cols-12 gap-10 md:gap-16">
           <div className="md:col-span-4">
@@ -142,6 +148,7 @@ export default function ServiceDetail() {
           </div>
         </div>
       </section>
+      )}
 
       {/* NEXT SERVICE + CTA */}
       <section className="py-16 md:py-20 bg-teal-700 text-paper">
@@ -149,10 +156,10 @@ export default function ServiceDetail() {
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <Reveal>
               <h2 className="font-display font-bold text-2xl md:text-3xl leading-tight">
-                Ready to get started with {service.shortName}?
+                {service.ctaTitle || `Ready to get started with ${service.shortName}?`}
               </h2>
               <p className="mt-3 text-paper/70 max-w-md">
-                Reach out and we'll walk you through what's needed for your specific situation.
+                {service.ctaText || "Reach out and we'll walk you through what's needed for your specific situation."}
               </p>
               <div className="mt-7 flex flex-col sm:flex-row gap-4">
                 <Link
@@ -181,7 +188,7 @@ export default function ServiceDetail() {
                     {next.logo ? (
                       <img src={next.logo} alt="" className="w-full h-full object-contain" />
                     ) : (
-                      <AssetEvalIcon size={18} className="text-teal-700" />
+                      <ServiceIcon slug={next.slug} size={18} className="text-teal-700" />
                     )}
                   </div>
                   <p className="eyebrow text-bronze-400">Next Service</p>

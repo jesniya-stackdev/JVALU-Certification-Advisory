@@ -190,14 +190,19 @@ export const services = [
       { title: 'Multi-category', detail: 'Register under several scopes' },
       { title: 'Group tenders', detail: 'ADNOC and group companies' },
     ],
-    documents: [
-      'Valid trade license',
-      'Company profile',
-      'Financial statements',
-      'ICV certificate',
-      'ISO and quality certificates',
-      'Bank and tax documents',
-    ],
+    checklist: {
+      eyebrow: 'Preparation Checklist',
+      title: 'Documents we help you prepare',
+      items: [
+        'Valid trade license',
+        'Company profile',
+        'Financial statements',
+        'ICV certificate',
+        'ISO and quality certificates',
+        'Bank and tax documents',
+      ],
+      note: 'Exact requirements vary by vendor category.',
+    },
     summary:
       'Guidance through the ADNOC supplier registration process, documentation, and prequalification so you can participate in tenders.',
     description:
@@ -245,6 +250,139 @@ export const services = [
         a: 'Yes, we can support registration across multiple vendor categories relevant to your scope of supply.',
       },
     ],
+  },
+  {
+    slug: 'classification',
+    logo: null,
+    name: 'Classification',
+    shortName: 'Classification',
+    seoTitle: 'Classification in UAE | Professional Classification Support',
+    seoDescription:
+      'Get professional classification support in the UAE. We assist businesses with classification applications, documentation, renewals, compliance requirements and certificate processing.',
+    highlights: [
+      { title: 'End to end', detail: 'Application to certificate' },
+      { title: 'Renewals and upgrades', detail: 'Tracked and managed for you' },
+      { title: 'UAE focus', detail: 'Projects and tenders' },
+    ],
+    checklist: {
+      eyebrow: "What's Included",
+      title: 'Our classification support includes',
+      items: [
+        'Classification application and renewal assistance',
+        'Documentation review and preparation',
+        'Eligibility and compliance assessment',
+        'Technical and financial document coordination',
+        'Application submission and follow-up',
+        'Classification certificate processing',
+        'Guidance on classification requirements and upgrades',
+      ],
+      note: 'Scope varies by classification category and authority.',
+    },
+    summary:
+      'Company and contractor classification support in the UAE, from application and documentation to renewal and certificate processing, so you can take part in relevant projects and tenders.',
+    description:
+      'We provide professional classification support to help businesses obtain the classification certificates and approvals they need to operate and participate in relevant projects and tenders across the UAE. Our team assists throughout the process, including documentation preparation, application submission, compliance requirements, coordination with the relevant authorities, and follow-up until completion. We aim to make company classification simple and efficient, helping you meet applicable requirements and strengthen your eligibility for business opportunities.',
+    whoFor:
+      'Contractors, engineering and technical companies, and other businesses that need a classification certificate or approval to operate in the UAE and bid on projects and tenders.',
+    process: [
+      {
+        title: 'Eligibility and Compliance Assessment',
+        detail:
+          'We review your activities, licenses, qualifications, and resources against the requirements of the classification you are applying for, and flag any gaps early.',
+      },
+      {
+        title: 'Documentation Review and Preparation',
+        detail:
+          'Our team reviews, organizes, and prepares your technical and financial documents in the format the relevant authority expects.',
+      },
+      {
+        title: 'Application Submission',
+        detail:
+          'We complete and submit the classification application with all required attachments, and coordinate with the relevant authorities on your behalf.',
+      },
+      {
+        title: 'Follow-up and Query Handling',
+        detail:
+          'We track the progress of your application and respond to any queries or requests for additional information so it keeps moving.',
+      },
+      {
+        title: 'Certificate Processing and Renewal',
+        detail:
+          'We support the issuance of your classification certificate, then keep track of renewal and upgrade requirements so your classification stays current.',
+      },
+    ],
+    faqs: [
+      {
+        q: 'What is a classification certificate?',
+        a: 'A classification certificate confirms the category under which your company is approved to operate or bid, based on factors such as qualifications, experience, resources, and financial standing. The exact criteria depend on the authority and the type of business.',
+      },
+      {
+        q: 'Which businesses need classification?',
+        a: 'Companies such as contractors and engineering or technical firms that must hold an approved classification to operate or to bid on projects and tenders. Whether it applies to you depends on your activity and the authority or client involved.',
+      },
+      {
+        q: 'What documents are required?',
+        a: 'Requirements vary by authority and category, and typically cover company registration and licensing, technical qualifications and experience, and financial records. After an initial review we give you an exact checklist for your case.',
+      },
+      {
+        q: 'How long does classification take?',
+        a: 'Timelines depend on the authority, the category, and how complete your documents are. Well-organized submissions move faster, which is why we review everything before submitting, and we will give you a realistic estimate once we know your category.',
+      },
+      {
+        q: 'Can you help with renewals and upgrades?',
+        a: 'Yes. We assist with renewal applications and guide you on what is needed to move to a higher classification where applicable.',
+      },
+    ],
+  },
+  {
+    slug: 'case-studies',
+    logo: null,
+    name: 'Case Studies',
+    shortName: 'Case Studies',
+    eyebrow: 'Case Studies · Project Experience',
+    seoTitle: 'Case Studies | Project Experience and Consultancy Approach — JVALU',
+    seoDescription:
+      'Explore selected JVALU case studies showing our experience, technical expertise and approach to solving business challenges across asset valuation, classification, engineering and financial consultancy.',
+    highlights: [
+      { title: 'Practical examples', detail: 'Challenges to outcomes' },
+      { title: 'Structured approach', detail: 'Assessment to recommendation' },
+      { title: 'Cross-industry', detail: 'Valuation, engineering, finance' },
+    ],
+    summary:
+      'Selected project examples showcasing our experience, technical expertise and approach to solving business challenges across different industries.',
+    description:
+      'Explore our selected case studies showcasing our experience, technical expertise and approach to solving business challenges. Through practical project examples, we highlight the challenges faced by our clients, the solutions implemented and the outcomes achieved across different industries. Our case studies demonstrate our commitment to delivering structured, professional and result-oriented solutions tailored to individual business requirements.',
+    whoFor:
+      'Businesses and decision-makers who want to understand how JVALU approaches real projects, and what to expect, before getting started.',
+    checklist: {
+      eyebrow: 'Inside Each Case Study',
+      title: 'What you will find in our case studies',
+      items: [
+        'Project background and business requirements',
+        'Challenges and technical considerations',
+        'Assessment and analysis approach',
+        'Solutions and recommendations',
+        'Project implementation and outcomes',
+        'Key learnings and business insights',
+      ],
+    },
+    approach: {
+      eyebrow: 'Our Approach',
+      title: 'Every project starts with your objectives',
+      text: "Every project presents unique requirements. We focus on understanding the client's objectives, evaluating the available information and developing practical solutions that support better business decisions.",
+    },
+    categories: {
+      eyebrow: 'Case Study Categories',
+      items: [
+        'Asset Valuation Projects',
+        'Contractor Classification Projects',
+        'Industrial and Engineering Projects',
+        'Financial and Business Consultancy',
+        'Technical Assessment Projects',
+      ],
+    },
+    ctaTitle: 'Have a similar project in mind?',
+    ctaText: "Tell us about your business requirements and we'll show you how we would approach them.",
   },
 ]
 

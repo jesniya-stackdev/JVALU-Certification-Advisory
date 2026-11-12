@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { ArrowRight, ArrowUpRight } from 'lucide-react'
 import PageHeader from '../components/PageHeader'
 import Reveal from '../components/Reveal'
-import AssetEvalIcon from '../components/AssetEvalIcon'
+import ServiceIcon from '../components/ServiceIcon'
 import Seo from '../components/Seo'
 import { services, company } from '../data/content'
 
@@ -11,13 +11,13 @@ export default function Services() {
   return (
     <div>
       <Seo
-        title="Our Services | ICV, ISO, Asset Evaluation & ADNOC Registration — JVALU"
-        description="Explore JVALU's certification and evaluation services: ICV Certification, ISO Certification, Asset Evaluation, and ADNOC Vendor Registration in the UAE."
+        title="Our Services | ICV, ISO, Classification, Asset Evaluation & ADNOC Registration — JVALU"
+        description="Explore JVALU's certification and evaluation services: ICV Certification, ISO Certification, Asset Evaluation, ADNOC Vendor Registration, and Classification in the UAE, plus selected case studies."
       />
       <PageHeader
         eyebrow="Our Services"
         title="Certification &amp; Evaluation Services"
-        subtitle="Four certification and evaluation services, each managed end-to-end so your team can stay focused on operations."
+        subtitle="Certification, classification, and evaluation services, plus case studies that show our approach in practice. Each engagement is managed end-to-end so your team can stay focused on operations."
       />
 
       <section className="py-20 md:py-24">
@@ -33,7 +33,7 @@ export default function Services() {
                     {s.logo ? (
                       <img src={s.logo} alt="" className="w-full h-full object-contain" />
                     ) : (
-                      <AssetEvalIcon size={28} className="text-teal-600" />
+                      <ServiceIcon slug={s.slug} size={28} className="text-teal-600" />
                     )}
                   </div>
                 </div>

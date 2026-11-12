@@ -1,7 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { ArrowRight, Check } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import Reveal from './Reveal'
+import { HighlightsStrip } from './ServiceBlocks'
 import heroImage from '../assets/adnoc/adnoc-hero.webp'
 
 // ADNOC-themed sections used by ServiceDetail for the ADNOC Vendor Registration page only.
@@ -23,10 +24,10 @@ export function AdnocHero({ service }) {
           width="1672"
           height="941"
           fetchpriority="high"
-          className="adnoc-photo-mask hidden lg:block absolute top-0 right-0 h-full w-auto max-w-none"
+          className="adnoc-photo-mask hidden xl:block absolute top-0 right-0 h-full w-auto max-w-none"
         />
 
-        <div className="relative max-w-7xl mx-auto px-5 md:px-8 pt-32 pb-10 md:pt-44 lg:pb-24 lg:min-h-[640px] flex items-center">
+        <div className="relative max-w-7xl mx-auto px-5 md:px-8 pt-32 pb-10 md:pt-44 xl:pb-24 xl:min-h-[640px] flex items-center">
           <Reveal>
             <div className="max-w-xl">
               <Link to="/services" className="inline-flex items-center gap-1 text-teal-500/70 hover:text-teal-500 text-sm mb-7 transition-colors">
@@ -58,32 +59,22 @@ export function AdnocHero({ service }) {
           </Reveal>
         </div>
 
-        {/* Mobile / tablet: photo cropped to the handshake and refinery below the text */}
-        <div className="lg:hidden relative aspect-[4/3] sm:aspect-[16/9] overflow-hidden">
+        {/* Below xl: photo cropped to the handshake and refinery below the text */}
+        <div className="xl:hidden relative aspect-[4/3] sm:aspect-[2/1] overflow-hidden">
           <img
             src={heroImage}
             alt="Business handshake in front of an oil and gas facility"
             width="1672"
             height="941"
             loading="lazy"
-            className="absolute bottom-0 right-0 w-[190%] sm:w-[130%] max-w-none"
+            className="absolute bottom-0 right-0 w-[200%] max-w-none"
           />
           <div className="absolute inset-y-0 left-0 w-[14%] bg-gradient-to-r from-[#F1F6F3] to-transparent" />
           <div className="absolute inset-x-0 top-0 h-[24%] bg-gradient-to-b from-[#F1F6F3] to-transparent" />
         </div>
       </section>
 
-      {/* Highlights strip */}
-      <section className="bg-teal-500 border-t-[3px] border-bronze-500">
-        <div className="max-w-7xl mx-auto px-5 md:px-8 grid sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-paper/10">
-          {service.highlights.map((h) => (
-            <div key={h.title} className="py-5 sm:px-8 first:sm:pl-0 last:sm:pr-0">
-              <p className="font-display font-bold text-xl text-paper">{h.title}</p>
-              <p className="text-paper/70 text-sm mt-0.5">{h.detail}</p>
-            </div>
-          ))}
-        </div>
-      </section>
+      <HighlightsStrip items={service.highlights} />
 
       <div className="bg-[#ECEAE2]">
         <p className="max-w-7xl mx-auto px-5 md:px-8 py-3 text-xs text-ink/55">
@@ -129,34 +120,6 @@ export function AdnocJourney({ service }) {
             ))}
           </ol>
         </div>
-      </div>
-    </section>
-  )
-}
-
-export function AdnocDocuments({ service }) {
-  return (
-    <section className="py-20 md:py-24">
-      <div className="max-w-7xl mx-auto px-5 md:px-8">
-        <Reveal>
-          <p className="eyebrow text-bronze-600 mb-4">Preparation Checklist</p>
-          <h2 className="font-display font-bold text-3xl md:text-[2.2rem] leading-tight text-teal-700 max-w-xl">
-            Documents we help you prepare
-          </h2>
-        </Reveal>
-        <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
-          {service.documents.map((doc, i) => (
-            <Reveal key={doc} delay={i * 50}>
-              <div className="flex items-center gap-3 bg-white border border-teal-500/12 px-4 py-3.5">
-                <span className="shrink-0 w-6 h-6 rounded-full bg-teal-500 flex items-center justify-center">
-                  <Check size={14} className="text-paper" strokeWidth={3} />
-                </span>
-                <span className="text-sm text-ink/80">{doc}</span>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-        <p className="mt-4 text-xs text-ink/55">Exact requirements vary by vendor category.</p>
       </div>
     </section>
   )
