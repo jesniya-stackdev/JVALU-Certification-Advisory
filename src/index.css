@@ -195,13 +195,13 @@ select:focus-visible {
 /* Case Studies hero backdrop */
 .case-hero-bg {
   background:
-    radial-gradient(900px 520px at 82% 40%, #DCEAE4 0%, rgba(220, 234, 228, 0) 70%),
-    #F1F6F3;
+    radial-gradient(900px 520px at 82% 40%, #F3E8CF 0%, rgba(243, 232, 207, 0) 70%),
+    #FBF7EE;
 }
 .case-hero-dots {
-  background-image: radial-gradient(#1F4A45 1.1px, transparent 1.2px);
+  background-image: radial-gradient(#96763A 1.1px, transparent 1.2px);
   background-size: 18px 18px;
-  opacity: 0.13;
+  opacity: 0.15;
   -webkit-mask-image: radial-gradient(520px 360px at 78% 38%, #000 0%, transparent 100%);
   mask-image: radial-gradient(520px 360px at 78% 38%, #000 0%, transparent 100%);
 }

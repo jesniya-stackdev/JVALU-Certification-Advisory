@@ -50,7 +50,7 @@ export function ChecklistSection({ eyebrow, title, items, note }) {
 export function ApproachSection({ approach, categories }) {
   const items = categories?.items || []
   return (
-    <section id="case-categories" className="scroll-mt-28 py-20 md:py-24 bg-sage/60">
+    <section id="case-categories" className="scroll-mt-28 py-20 md:py-24 bg-[#FAF4E6]">
       <div className="max-w-7xl mx-auto px-5 md:px-8 grid lg:grid-cols-12 gap-10 lg:gap-16">
         <div className="lg:col-span-5">
           <Reveal>

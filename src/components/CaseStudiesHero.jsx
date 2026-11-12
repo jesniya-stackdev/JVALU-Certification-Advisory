@@ -29,7 +29,7 @@ function CategoryCard({ icon: Icon, index, title, className = '', style }) {
       style={style}
       className={`bg-white border border-teal-500/12 border-t-[3px] border-t-bronze-500 px-[22px] py-5 flex items-start gap-4 shadow-[0_18px_40px_-18px_rgba(16,38,34,0.35)] ${className}`}
     >
-      <span className="shrink-0 w-[46px] h-[46px] rounded-full bg-sage flex items-center justify-center text-teal-500">
+      <span className="shrink-0 w-[46px] h-[46px] rounded-full bg-[#F8F0DD] flex items-center justify-center text-bronze-600">
         <Icon size={22} strokeWidth={1.75} />
       </span>
       <div>
@@ -52,9 +52,9 @@ export default function CaseStudiesHero({ service }) {
       <div className="case-hero-dots absolute inset-0 pointer-events-none" aria-hidden="true" />
 
       <svg className="hidden xl:block absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 1440 640" preserveAspectRatio="none" aria-hidden="true">
-        <path d="M560 520 C 760 120, 1080 60, 1400 190" fill="none" stroke="#1F4A45" strokeOpacity=".18" strokeWidth="1.2" />
-        <path d="M640 600 C 880 260, 1160 180, 1440 330" fill="none" stroke="#B8924A" strokeOpacity=".35" strokeWidth="1.2" />
-        <path d="M720 120 C 900 40, 1200 40, 1380 110" fill="none" stroke="#1F4A45" strokeOpacity=".12" strokeWidth="1.2" />
+        <path d="M560 520 C 760 120, 1080 60, 1400 190" fill="none" stroke="#96763A" strokeOpacity=".3" strokeWidth="1.2" />
+        <path d="M640 600 C 880 260, 1160 180, 1440 330" fill="none" stroke="#B8924A" strokeOpacity=".5" strokeWidth="1.2" />
+        <path d="M720 120 C 900 40, 1200 40, 1380 110" fill="none" stroke="#96763A" strokeOpacity=".2" strokeWidth="1.2" />
       </svg>
       {networkNodes.map((n) => (
         <span
