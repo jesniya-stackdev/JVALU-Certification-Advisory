@@ -135,6 +135,49 @@ export const services = [
     logo: isoLogo,
     name: 'ISO Certification',
     shortName: 'ISO',
+    eyebrow: 'Management System Certification',
+    heroText:
+      'End-to-end support for ISO 9001, 14001, 45001 and other management system certifications, from gap analysis to audit readiness and certificate.',
+    seoTitle: 'ISO Certification in UAE | ISO 9001, 14001, 45001 & 22000 Support — JVALU',
+    seoDescription:
+      'JVALU supports UAE businesses with ISO certification: gap analysis, documentation, implementation, internal audit and certification audit coordination for ISO 9001, 14001, 45001 and 22000.',
+    highlights: [
+      { title: '2 to 4 months', detail: 'Gap analysis to certificate' },
+      { title: 'Stage 1 and Stage 2', detail: 'Audits by an accredited body' },
+      { title: 'Tender-ready', detail: 'A common UAE pre-qualification need' },
+    ],
+    standards: {
+      eyebrow: 'Standards We Support',
+      title: 'Standards our clients certify to',
+      text: 'We help you choose the standard that fits your sector and customers, then build a system your team actually follows.',
+      note: 'Other standards, such as information security, are available depending on your sector.',
+      items: [
+        { key: 'quality', code: 'ISO 9001', title: 'Quality Management', detail: 'Consistent processes and customer satisfaction across the business.' },
+        { key: 'environment', code: 'ISO 14001', title: 'Environmental Management', detail: 'Control your environmental impact and meet compliance obligations.' },
+        { key: 'safety', code: 'ISO 45001', title: 'Occupational Health & Safety', detail: 'Reduce workplace risk and protect your people.' },
+        { key: 'food', code: 'ISO 22000', title: 'Food Safety', detail: 'Manage food safety hazards across your supply chain.' },
+      ],
+    },
+    journey: {
+      eyebrow: 'The Certification Journey',
+      title: 'From gap analysis to certificate',
+      text: 'Five clear steps, with JVALU building the system and preparing you for the audit at each one.',
+    },
+    checklist: {
+      eyebrow: 'Preparation Checklist',
+      title: 'What we help you put in place',
+      items: [
+        'Scope and process map',
+        'Policies and procedures',
+        'Records and forms',
+        'Roles and responsibilities',
+        'Internal audit report',
+        'Management review minutes',
+      ],
+      note: 'Exact requirements depend on the standard and your business.',
+    },
+    ctaTitle: 'Ready to get ISO certified?',
+    ctaText: "Tell us about your business and we'll recommend the right standard and map out the steps to certification.",
     summary:
       'End-to-end support for ISO 9001, 14001, 45001 and other management system certifications, from gap analysis to audit readiness.',
     description:
@@ -181,6 +224,14 @@ export const services = [
         q: 'Do we need ISO certification for tenders?',
         a: 'Many government and large private-sector tenders in the UAE list ISO certification as a pre-qualification requirement, particularly ISO 9001.',
       },
+      {
+        q: 'Who issues the ISO certificate?',
+        a: 'The certificate is issued by an accredited certification body after your Stage 1 and Stage 2 audits. We prepare your system and coordinate the audits, but the certification decision is made by the certification body.',
+      },
+      {
+        q: 'How long is an ISO certificate valid?',
+        a: 'ISO management system certificates normally run on a three-year cycle, with surveillance audits each year in between. We help you stay audit-ready throughout.',
+      },
     ],
   },
   {
@@ -188,6 +239,62 @@ export const services = [
     logo: null,
     name: 'Asset Evaluation',
     shortName: 'Asset Evaluation',
+    eyebrow: 'Independent Valuation',
+    heroText:
+      'Independent, defensible valuation of your fixed assets, equipment and business holdings for financial reporting, financing, insurance, sale or ICV support.',
+    seoTitle: 'Asset Evaluation in UAE | Independent Asset & Equipment Valuation — JVALU',
+    seoDescription:
+      'JVALU provides independent asset evaluation in the UAE: machinery, equipment, vehicles, real estate, IT infrastructure and business valuation for financial reporting, financing, insurance and ICV.',
+    highlights: [
+      { title: 'Within a week', detail: 'Straightforward equipment valuations' },
+      { title: 'Cost, market, income', detail: 'Valuation approaches applied' },
+      { title: 'Formal report', detail: 'For auditors, banks and insurers' },
+    ],
+    assetTypes: {
+      eyebrow: 'What We Value',
+      title: 'Assets and holdings we evaluate',
+      text: 'From a single machine to a whole business, we value what you own using the approach that fits the purpose.',
+      note: 'The valuation method differs for financial reporting, sale or insurance, so we confirm the purpose first.',
+      items: [
+        { key: 'machinery', title: 'Machinery & Equipment', detail: 'Plant, machinery and equipment, valued on condition, age and specification.' },
+        { key: 'vehicles', title: 'Vehicles', detail: 'Cars, trucks and specialist vehicles and fleets.' },
+        { key: 'property', title: 'Real Estate', detail: 'Land and property holdings.' },
+        { key: 'it', title: 'IT Infrastructure', detail: 'Servers, networks and other technology assets.' },
+        { key: 'business', title: 'Business Enterprise', detail: 'The overall value of an entire business.' },
+      ],
+    },
+    purposes: {
+      eyebrow: 'When You Need It',
+      title: 'Why businesses commission a valuation',
+      text: 'An independent value gives auditors, banks, insurers and buyers something they can rely on.',
+      items: [
+        { title: 'Financial reporting', detail: 'Supportable asset values for your financial statements.' },
+        { title: 'Bank financing', detail: 'Independent evidence of asset value for lenders.' },
+        { title: 'Insurance cover', detail: 'Cover based on what your assets are actually worth.' },
+        { title: 'Mergers and acquisitions', detail: 'A defensible value when buying, selling or restructuring.' },
+        { title: 'ICV certification', detail: 'Supporting evidence of local asset investment in your ICV submission.' },
+      ],
+    },
+    journey: {
+      eyebrow: 'The Valuation Journey',
+      title: 'From scope to signed report',
+      text: 'Four clear steps, with our evaluators handling the inspection, analysis and report.',
+    },
+    checklist: {
+      eyebrow: 'Preparation Checklist',
+      title: 'What helps us start quickly',
+      items: [
+        'List of assets in scope',
+        'Purpose of the valuation',
+        'Purchase invoices and registrations',
+        'Existing asset register',
+        'Site access for inspection',
+        'Latest financial statements',
+      ],
+      note: 'Exact requirements depend on the assets and the purpose of the valuation.',
+    },
+    ctaTitle: 'Need an asset valuation?',
+    ctaText: "Tell us what you need valued and why, and we'll confirm the scope, timing and what to prepare.",
     summary:
       'Independent valuation of fixed assets, equipment, and business holdings for financial reporting, sale, insurance, or investment purposes.',
     description:
@@ -228,6 +335,14 @@ export const services = [
       {
         q: 'How long does an evaluation take?',
         a: 'Straightforward equipment valuations can be completed within a week; larger or multi-site engagements take longer depending on scope.',
+      },
+      {
+        q: 'Do you need to visit our site?',
+        a: 'Where applicable, our evaluators physically inspect and catalogue the assets, recording condition, age and specification, so the value reflects what is actually there.',
+      },
+      {
+        q: 'What do we receive at the end?',
+        a: 'A formal valuation report suitable for submission to auditors, banks, insurers or certification bodies.',
       },
     ],
   },
@@ -307,6 +422,16 @@ export const services = [
     logo: null,
     name: 'Classification',
     shortName: 'Classification',
+    eyebrow: 'Company & Contractor Classification',
+    heroText:
+      'Company and contractor classification support in the UAE, from application and documentation to renewal and certificate, so you can take part in relevant projects and tenders.',
+    journey: {
+      eyebrow: 'The Classification Lifecycle',
+      title: 'From first application to renewal and upgrade',
+      text: 'Five clear stages, with JVALU handling the documents, the authority and the follow-up at each one.',
+    },
+    ctaTitle: 'Need a classification certificate?',
+    ctaText: "Tell us about your company and activity, and we'll confirm the category, what's required and a realistic timeline.",
     seoTitle: 'Classification in UAE | Professional Classification Support',
     seoDescription:
       'Get professional classification support in the UAE. We assist businesses with classification applications, documentation, renewals, compliance requirements and certificate processing.',

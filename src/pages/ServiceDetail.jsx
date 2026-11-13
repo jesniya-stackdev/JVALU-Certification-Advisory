@@ -8,6 +8,9 @@ import Seo from '../components/Seo'
 import { AdnocHero, AdnocJourney } from '../components/AdnocSections'
 import CaseStudiesHero from '../components/CaseStudiesHero'
 import { IcvHero, IcvDrivers, IcvJourney } from '../components/IcvSections'
+import { IsoHero, IsoStandards } from '../components/IsoSections'
+import { AssetHero, AssetTypes, AssetPurposes } from '../components/AssetSections'
+import { ClassificationHero, ClassificationLifecycle, ClassificationIncluded } from '../components/ClassificationSections'
 import { HighlightsStrip, ChecklistSection, ApproachSection } from '../components/ServiceBlocks'
 import { services, company } from '../data/content'
 
@@ -22,6 +25,9 @@ export default function ServiceDetail() {
   const isAdnoc = slug === 'adnoc-vendor-registration'
   const isCaseStudies = slug === 'case-studies'
   const isIcv = slug === 'icv-certification'
+  const isIso = slug === 'iso-certification'
+  const isAsset = slug === 'asset-evaluation'
+  const isClassification = slug === 'classification'
 
   return (
     <div>
@@ -30,7 +36,7 @@ export default function ServiceDetail() {
         description={service.seoDescription || service.summary}
       />
       {/* HEADER */}
-      {isAdnoc ? <AdnocHero service={service} /> : isCaseStudies ? <CaseStudiesHero service={service} /> : isIcv ? <IcvHero service={service} /> : (
+      {isAdnoc ? <AdnocHero service={service} /> : isCaseStudies ? <CaseStudiesHero service={service} /> : isIcv ? <IcvHero service={service} /> : isIso ? <IsoHero service={service} /> : isAsset ? <AssetHero service={service} /> : isClassification ? <ClassificationHero service={service} /> : (
       <section className="relative overflow-hidden bg-teal-700 text-paper">
         <div className="absolute inset-0 bg-noise pointer-events-none" />
         <div
@@ -86,12 +92,17 @@ export default function ServiceDetail() {
       </section>
 
       {isIcv && <IcvDrivers drivers={service.drivers} />}
+      {isIso && <IsoStandards standards={service.standards} />}
+      {isAsset && <AssetTypes assetTypes={service.assetTypes} />}
+      {isAsset && <AssetPurposes purposes={service.purposes} />}
 
       {/* PROCESS */}
       {isAdnoc ? (
         <AdnocJourney service={service} />
-      ) : isIcv ? (
+      ) : isIcv || isIso || isAsset ? (
         <IcvJourney service={service} />
+      ) : isClassification ? (
+        <ClassificationLifecycle service={service} />
       ) : service.process && (
       <section className="py-20 md:py-24 bg-sage/60">
         <div className="max-w-7xl mx-auto px-5 md:px-8">
@@ -121,7 +132,9 @@ export default function ServiceDetail() {
       </section>
       )}
 
-      {service.checklist && <ChecklistSection {...service.checklist} />}
+      {service.checklist && (isClassification
+        ? <ClassificationIncluded {...service.checklist} />
+        : <ChecklistSection {...service.checklist} />)}
 
       {service.approach && <ApproachSection approach={service.approach} categories={service.categories} />}
 

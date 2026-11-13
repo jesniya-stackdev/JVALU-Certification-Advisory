@@ -215,3 +215,13 @@ select:focus-visible {
   -webkit-mask-image: radial-gradient(700px 480px at 78% 45%, #000, transparent 75%);
   mask-image: radial-gradient(700px 480px at 78% 45%, #000, transparent 75%);
 }
+
+/* Light drafting-paper grid for the Classification hero */
+.class-hero-grid {
+  background-image:
+    linear-gradient(rgba(31, 74, 69, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(31, 74, 69, 0.07) 1px, transparent 1px);
+  background-size: 48px 48px;
+  -webkit-mask-image: radial-gradient(760px 520px at 75% 55%, #000, transparent 80%);
+  mask-image: radial-gradient(760px 520px at 75% 55%, #000, transparent 80%);
+}
