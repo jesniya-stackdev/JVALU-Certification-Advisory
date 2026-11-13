@@ -4,6 +4,7 @@ import { ArrowRight, ArrowUpRight, Target, Eye, Award } from 'lucide-react'
 import Reveal from '../components/Reveal'
 import AboutHero from '../components/AboutHero'
 import ServiceIcon from '../components/ServiceIcon'
+import SectionVideo from '../components/SectionVideo'
 import Seo from '../components/Seo'
 import { whyChooseUs, services, company } from '../data/content'
 
@@ -64,8 +65,11 @@ export default function About() {
         </div>
       </section>
 
-      <section className="py-20 md:py-24 bg-sage/60">
-        <div className="max-w-7xl mx-auto px-5 md:px-8 grid sm:grid-cols-3 gap-5">
+      <section className="relative overflow-hidden py-24 md:py-32 bg-teal-800">
+        <SectionVideo src="/video/about-tower.mp4" />
+        <div className="absolute inset-0 bg-teal-900/70" aria-hidden="true" />
+        <div className="absolute inset-0 bg-gradient-to-t from-teal-900/60 via-transparent to-teal-900/30" aria-hidden="true" />
+        <div className="relative max-w-7xl mx-auto px-5 md:px-8 grid sm:grid-cols-3 gap-5">
           {pillars.map(({ icon: Icon, title, text }, i) => (
             <Reveal key={title} delay={i * 100}>
               <div className="group h-full bg-white border border-teal-500/12 border-t-[3px] border-t-bronze-500 p-8 shadow-[0_18px_40px_-22px_rgba(16,38,34,0.35)] transition-[transform,box-shadow,background-color] duration-300 ease-out hover:bg-teal-500 hover:-translate-y-1 hover:shadow-[0_24px_36px_-18px_rgba(16,38,34,0.55)] motion-reduce:transition-none motion-reduce:hover:transform-none">
