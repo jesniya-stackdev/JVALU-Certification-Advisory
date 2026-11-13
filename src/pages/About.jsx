@@ -39,37 +39,36 @@ export default function About() {
         subtitle="A UAE-based consultancy built around one goal: making certification and compliance straightforward for the businesses we work with."
       />
 
-      <section className="py-20 md:py-24">
-        <div className="max-w-7xl mx-auto px-5 md:px-8 grid md:grid-cols-12 gap-12 md:gap-16">
+      <section className="relative overflow-hidden bg-teal-800">
+        <SectionVideo src="/video/about-tower.mp4" />
+        <div className="absolute inset-0 bg-teal-900/65" aria-hidden="true" />
+        <div className="absolute inset-0 bg-gradient-to-b from-teal-900/55 via-transparent to-teal-900/45" aria-hidden="true" />
+
+        <div className="relative max-w-7xl mx-auto px-5 md:px-8 pt-20 md:pt-24 pb-14 md:pb-16 grid md:grid-cols-12 gap-12 md:gap-16">
           <div className="md:col-span-5">
             <Reveal>
-              <p className="eyebrow text-bronze-600 mb-4">Who We Are</p>
-              <h2 className="font-display font-bold text-3xl leading-tight text-teal-700">
+              <p className="eyebrow text-bronze-400 mb-4">Who We Are</p>
+              <h2 className="font-display font-bold text-3xl leading-tight text-white">
                 Compliance expertise, applied to your business
               </h2>
             </Reveal>
           </div>
           <div className="md:col-span-7">
             <Reveal delay={100}>
-              <p className="text-ink/75 text-lg leading-relaxed">
+              <p className="text-paper/90 text-lg leading-relaxed">
                 JVALU is a UAE-based consultancy dedicated to helping organizations improve compliance, strengthen operational performance, and achieve internationally recognized certifications.
               </p>
-              <p className="mt-4 text-ink/75 leading-relaxed">
+              <p className="mt-4 text-paper/80 leading-relaxed">
                 We support businesses in obtaining and maintaining ICV Certification, ISO Certifications, Asset Evaluation, and ADNOC Vendor Registration. Each engagement is managed from the initial assessment through to certificate issuance, with the documentation and audit coordination handled on your behalf.
               </p>
-              <p className="mt-4 text-ink/75 leading-relaxed">
+              <p className="mt-4 text-paper/80 leading-relaxed">
                 Our work sits at the intersection of regulatory requirement and operational reality, we translate what certification bodies expect into a process your team can actually follow.
               </p>
             </Reveal>
           </div>
         </div>
-      </section>
 
-      <section className="relative overflow-hidden py-24 md:py-32 bg-teal-800">
-        <SectionVideo src="/video/about-tower.mp4" />
-        <div className="absolute inset-0 bg-teal-900/70" aria-hidden="true" />
-        <div className="absolute inset-0 bg-gradient-to-t from-teal-900/60 via-transparent to-teal-900/30" aria-hidden="true" />
-        <div className="relative max-w-7xl mx-auto px-5 md:px-8 grid sm:grid-cols-3 gap-5">
+        <div className="relative max-w-7xl mx-auto px-5 md:px-8 pb-24 md:pb-32 grid sm:grid-cols-3 gap-5">
           {pillars.map(({ icon: Icon, title, text }, i) => (
             <Reveal key={title} delay={i * 100}>
               <div className="group h-full bg-white border border-teal-500/12 border-t-[3px] border-t-bronze-500 p-8 shadow-[0_18px_40px_-22px_rgba(16,38,34,0.35)] transition-[transform,box-shadow,background-color] duration-300 ease-out hover:bg-teal-500 hover:-translate-y-1 hover:shadow-[0_24px_36px_-18px_rgba(16,38,34,0.55)] motion-reduce:transition-none motion-reduce:hover:transform-none">
