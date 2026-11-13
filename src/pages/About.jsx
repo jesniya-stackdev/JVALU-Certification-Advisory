@@ -43,6 +43,9 @@ export default function About() {
         <SectionVideo src="/video/about-tower.mp4" />
         <div className="absolute inset-0 bg-teal-900/65" aria-hidden="true" />
         <div className="absolute inset-0 bg-gradient-to-b from-teal-900/55 via-transparent to-teal-900/45" aria-hidden="true" />
+        {/* Blend from the hero colour into the video, with a fine gold line where the two meet */}
+        <div className="absolute inset-x-0 top-0 h-44 md:h-60 bg-gradient-to-b from-teal-700 via-teal-700/70 to-transparent" aria-hidden="true" />
+        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-bronze-500/80 to-transparent" aria-hidden="true" />
 
         <div className="relative max-w-7xl mx-auto px-5 md:px-8 pt-20 md:pt-24 pb-14 md:pb-16 grid md:grid-cols-12 gap-12 md:gap-16">
           <div className="md:col-span-5">
