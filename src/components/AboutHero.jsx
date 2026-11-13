@@ -30,12 +30,6 @@ export default function AboutHero({ eyebrow, title, subtitle }) {
         <div className="relative max-w-7xl mx-auto px-5 md:px-8 pt-32 pb-16 md:pt-44 md:pb-24 grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
           <div className="lg:col-span-7">
             <Reveal>
-              <p className="text-sm text-paper/60 mb-7">
-                <Link to="/" className="hover:text-paper transition-colors">Home</Link>
-                <span className="mx-2">/</span>
-                <span className="text-paper font-medium">About</span>
-              </p>
-              <div className="w-16 h-[3px] bg-bronze-500 mb-5" />
               <p className="eyebrow text-bronze-400">{eyebrow}</p>
               <h1 className="mt-4 mb-5 font-playfair font-extrabold text-4xl sm:text-5xl xl:text-6xl leading-[1.05] tracking-[-0.01em] text-white">
                 {title}
