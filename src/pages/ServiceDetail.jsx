@@ -7,6 +7,7 @@ import FaqItem from '../components/FaqItem'
 import Seo from '../components/Seo'
 import { AdnocHero, AdnocJourney } from '../components/AdnocSections'
 import CaseStudiesHero from '../components/CaseStudiesHero'
+import { IcvHero, IcvDrivers, IcvJourney } from '../components/IcvSections'
 import { HighlightsStrip, ChecklistSection, ApproachSection } from '../components/ServiceBlocks'
 import { services, company } from '../data/content'
 
@@ -20,6 +21,7 @@ export default function ServiceDetail() {
   const next = services[(currentIndex + 1) % services.length]
   const isAdnoc = slug === 'adnoc-vendor-registration'
   const isCaseStudies = slug === 'case-studies'
+  const isIcv = slug === 'icv-certification'
 
   return (
     <div>
@@ -28,7 +30,7 @@ export default function ServiceDetail() {
         description={service.seoDescription || service.summary}
       />
       {/* HEADER */}
-      {isAdnoc ? <AdnocHero service={service} /> : isCaseStudies ? <CaseStudiesHero service={service} /> : (
+      {isAdnoc ? <AdnocHero service={service} /> : isCaseStudies ? <CaseStudiesHero service={service} /> : isIcv ? <IcvHero service={service} /> : (
       <section className="relative overflow-hidden bg-teal-700 text-paper">
         <div className="absolute inset-0 bg-noise pointer-events-none" />
         <div
@@ -83,9 +85,13 @@ export default function ServiceDetail() {
         </div>
       </section>
 
+      {isIcv && <IcvDrivers drivers={service.drivers} />}
+
       {/* PROCESS */}
       {isAdnoc ? (
         <AdnocJourney service={service} />
+      ) : isIcv ? (
+        <IcvJourney service={service} />
       ) : service.process && (
       <section className="py-20 md:py-24 bg-sage/60">
         <div className="max-w-7xl mx-auto px-5 md:px-8">

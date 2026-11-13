@@ -31,6 +31,49 @@ export const services = [
     logo: icvLogo,
     name: 'ICV Certification',
     shortName: 'ICV',
+    eyebrow: 'UAE ICV Programme · MoIAT',
+    heroText:
+      'Get your In-Country Value certificate under the UAE ICV Programme of the Ministry of Industry and Advanced Technology, and qualify for ADNOC and other UAE entity tenders.',
+    seoTitle: 'ICV Certification in UAE | In-Country Value Certificate Support — JVALU',
+    seoDescription:
+      'JVALU supports UAE companies with ICV (In-Country Value) certification: score assessment, data preparation, auditor coordination, certificate issuance and renewal for ADNOC and UAE entity tenders.',
+    highlights: [
+      { title: '14 months', detail: 'ICV certificate validity' },
+      { title: '2 to 4 weeks', detail: 'Typical certification timeline' },
+      { title: 'ADNOC and UAE entities', detail: 'Tender-ready certification' },
+    ],
+    drivers: {
+      eyebrow: 'What Shapes Your Score',
+      title: 'Four things that move your ICV score',
+      text: 'ICV measures how much of your business value stays in the UAE economy. These are the main areas the score is built on.',
+      note: 'The scoring methodology is set by the ICV certifying body. Your score reflects your actual figures.',
+      items: [
+        { key: 'spend', title: 'Local Spend', detail: 'What you spend on goods and services from UAE-based suppliers.' },
+        { key: 'people', title: 'Emiratisation', detail: 'The share of your workforce and payroll that is UAE national.' },
+        { key: 'manufacturing', title: 'Local Manufacturing', detail: 'Products made, assembled or finished inside the UAE.' },
+        { key: 'investment', title: 'Asset Investment', detail: 'Assets and capital you have invested within the UAE.' },
+      ],
+    },
+    journey: {
+      eyebrow: 'The Certification Journey',
+      title: 'From first assessment to certificate and renewal',
+      text: 'Five clear steps, with JVALU handling the data, the auditor and the follow-up at each one.',
+    },
+    checklist: {
+      eyebrow: 'Preparation Checklist',
+      title: 'Information we help you prepare',
+      items: [
+        'Financial statements',
+        'Payroll and staff records',
+        'Supplier and procurement records',
+        'Valid trade license',
+        'UAE national employee details',
+        'Fixed asset and investment records',
+      ],
+      note: 'Exact requirements depend on your company and the certification body.',
+    },
+    ctaTitle: 'Ready to get your ICV certificate?',
+    ctaText: "Tell us about your business and we'll assess where you stand and what it takes to certify.",
     summary:
       'In Country Value certification assessment and submission support to help your business qualify for ADNOC and other UAE entity tenders.',
     description:
@@ -76,6 +119,14 @@ export const services = [
       {
         q: 'How is the ICV score calculated?',
         a: 'The score weighs factors including UAE national spend, Emiratisation levels, local manufacturing, and asset investment within the UAE, based on the methodology set by the ICV certifying body.',
+      },
+      {
+        q: 'How long is an ICV certificate valid?',
+        a: 'ICV certificates are valid for 14 months. We track your renewal date and start the re-certification early so there is no gap in your eligibility to bid.',
+      },
+      {
+        q: 'Can you tell us our likely score before we certify?',
+        a: 'Yes. Our initial assessment reviews your financial statements, payroll and procurement records to estimate where you are likely to land, and to show which areas have the most room to improve.',
       },
     ],
   },
