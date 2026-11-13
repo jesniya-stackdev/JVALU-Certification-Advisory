@@ -1,10 +1,29 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { ArrowRight, Target, Eye, Award } from 'lucide-react'
+import { ArrowRight, ArrowUpRight, Target, Eye, Award } from 'lucide-react'
 import Reveal from '../components/Reveal'
-import PageHeader from '../components/PageHeader'
+import AboutHero from '../components/AboutHero'
+import ServiceIcon from '../components/ServiceIcon'
 import Seo from '../components/Seo'
-import { whyChooseUs } from '../data/content'
+import { whyChooseUs, services, company } from '../data/content'
+
+const pillars = [
+  {
+    icon: Target,
+    title: 'Our Mission',
+    text: 'To make certification and compliance accessible, transparent, and manageable for businesses operating in the UAE, regardless of size or sector.',
+  },
+  {
+    icon: Eye,
+    title: 'Our Vision',
+    text: 'To be the consultancy UAE businesses turn to first for certification, recognized for clarity, reliability, and follow-through.',
+  },
+  {
+    icon: Award,
+    title: 'Our Approach',
+    text: 'Direct communication, realistic timelines, and documentation built specifically for your operations rather than recycled templates.',
+  },
+]
 
 export default function About() {
   return (
@@ -13,7 +32,11 @@ export default function About() {
         title="About Us | JVALU — UAE Certification & Compliance Consultancy"
         description="Learn about JVALU, a UAE-based consultancy helping businesses achieve ICV, ISO, Asset Evaluation, and ADNOC certification with direct communication and end-to-end support."
       />
-      <PageHeader eyebrow="About JVALU" title="Who We Are" subtitle="A UAE-based consultancy built around one goal: making certification and compliance straightforward for the businesses we work with." />
+      <AboutHero
+        eyebrow="About JVALU"
+        title="Who We Are"
+        subtitle="A UAE-based consultancy built around one goal: making certification and compliance straightforward for the businesses we work with."
+      />
 
       <section className="py-20 md:py-24">
         <div className="max-w-7xl mx-auto px-5 md:px-8 grid md:grid-cols-12 gap-12 md:gap-16">
@@ -43,31 +66,62 @@ export default function About() {
 
       <section className="py-20 md:py-24 bg-sage/60">
         <div className="max-w-7xl mx-auto px-5 md:px-8 grid sm:grid-cols-3 gap-5">
+          {pillars.map(({ icon: Icon, title, text }, i) => (
+            <Reveal key={title} delay={i * 100}>
+              <div className="group h-full bg-white border border-teal-500/12 border-t-[3px] border-t-bronze-500 p-8 shadow-[0_18px_40px_-22px_rgba(16,38,34,0.35)] transition-[transform,box-shadow,background-color] duration-300 ease-out hover:bg-teal-500 hover:-translate-y-1 hover:shadow-[0_24px_36px_-18px_rgba(16,38,34,0.55)] motion-reduce:transition-none motion-reduce:hover:transform-none">
+                <div className="flex items-center justify-between mb-6">
+                  <span className="w-12 h-12 rounded-full bg-[#F8F0DD] flex items-center justify-center text-bronze-600 transition-colors duration-300 group-hover:bg-bronze-500 group-hover:text-teal-700">
+                    <Icon size={22} strokeWidth={1.75} />
+                  </span>
+                  <span className="font-mono text-xs tracking-[0.14em] text-bronze-600 transition-colors duration-300 group-hover:text-bronze-400">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                </div>
+                <h3 className="font-display font-bold text-lg text-teal-700 mb-3 transition-colors duration-300 group-hover:text-paper">{title}</h3>
+                <p className="text-sm text-ink/65 leading-relaxed transition-colors duration-300 group-hover:text-paper/80">{text}</p>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
+      <section className="py-16 md:py-20 bg-white border-b border-teal-500/10">
+        <div className="max-w-7xl mx-auto px-5 md:px-8">
           <Reveal>
-            <div className="lift-card group bg-white border border-teal-500/12 p-8 h-full stamp-mark">
-              <Target size={24} className="text-bronze-500 mb-5 group-hover:scale-110 transition-transform duration-300" strokeWidth={1.75} />
-              <h3 className="font-display font-bold text-lg text-teal-700 mb-3">Our Mission</h3>
-              <p className="text-sm text-ink/65 leading-relaxed">
-                To make certification and compliance accessible, transparent, and manageable for businesses operating in the UAE, regardless of size or sector.
-              </p>
+            <div className="flex items-end justify-between flex-wrap gap-4 mb-8">
+              <div>
+                <p className="eyebrow text-bronze-600 mb-4">What We Do</p>
+                <h2 className="font-display font-bold text-3xl leading-tight text-teal-700">
+                  One team across every certification
+                </h2>
+              </div>
+              <Link
+                to="/services"
+                className="inline-flex items-center gap-2 text-teal-500 font-display font-semibold text-sm uppercase tracking-wide hover:text-teal-600 transition-colors"
+              >
+                View All Services <ArrowUpRight size={16} />
+              </Link>
             </div>
           </Reveal>
           <Reveal delay={100}>
-            <div className="lift-card group bg-white border border-teal-500/12 p-8 h-full stamp-mark">
-              <Eye size={24} className="text-bronze-500 mb-5 group-hover:scale-110 transition-transform duration-300" strokeWidth={1.75} />
-              <h3 className="font-display font-bold text-lg text-teal-700 mb-3">Our Vision</h3>
-              <p className="text-sm text-ink/65 leading-relaxed">
-                To be the consultancy UAE businesses turn to first for certification, recognized for clarity, reliability, and follow-through.
-              </p>
-            </div>
-          </Reveal>
-          <Reveal delay={200}>
-            <div className="lift-card group bg-white border border-teal-500/12 p-8 h-full stamp-mark">
-              <Award size={24} className="text-bronze-500 mb-5 group-hover:scale-110 transition-transform duration-300" strokeWidth={1.75} />
-              <h3 className="font-display font-bold text-lg text-teal-700 mb-3">Our Approach</h3>
-              <p className="text-sm text-ink/65 leading-relaxed">
-                Direct communication, realistic timelines, and documentation built specifically for your operations rather than recycled templates.
-              </p>
+            <div className="flex flex-wrap gap-3">
+              {services.map((s) => (
+                <Link
+                  key={s.slug}
+                  to={`/services/${s.slug}`}
+                  className="group inline-flex items-center gap-3 px-5 py-3 bg-paper border border-teal-500/15 hover:border-teal-500 hover:bg-teal-500/5 transition-colors"
+                >
+                  <span className="w-8 h-8 rounded-full bg-white border border-teal-500/10 flex items-center justify-center overflow-hidden p-1 shrink-0">
+                    {s.logo ? (
+                      <img src={s.logo} alt="" className="w-full h-full object-contain" />
+                    ) : (
+                      <ServiceIcon slug={s.slug} size={16} className="text-teal-600" />
+                    )}
+                  </span>
+                  <span className="font-display font-semibold text-sm text-teal-700">{s.name}</span>
+                  <ArrowUpRight size={15} className="text-teal-500/50 group-hover:text-teal-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+                </Link>
+              ))}
             </div>
           </Reveal>
         </div>
@@ -96,12 +150,23 @@ export default function About() {
         <div className="max-w-4xl mx-auto px-5 md:px-8 text-center">
           <Reveal>
             <h2 className="font-display font-bold text-2xl md:text-3xl">Let's discuss what your business needs</h2>
-            <Link
-              to="/contact"
-              className="btn-press mt-7 inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-bronze-500 text-teal-800 font-display font-semibold text-sm uppercase tracking-wide hover:bg-bronze-400 transition-colors"
-            >
-              Request Consultation <ArrowRight size={16} />
-            </Link>
+            <div className="mt-7 flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                to="/contact"
+                className="group btn-press inline-flex items-center justify-center gap-3 h-[52px] px-6 bg-bronze-500 text-teal-700 font-display font-bold text-[13px] uppercase tracking-[0.06em] shadow-[inset_0_-3px_0_#96763A] transition-all duration-300 hover:bg-bronze-400 hover:-translate-y-0.5 motion-reduce:transition-none motion-reduce:hover:transform-none"
+              >
+                Request Consultation
+                <ArrowRight size={16} strokeWidth={2.5} className="transition-transform duration-300 group-hover:translate-x-1 motion-reduce:transition-none" />
+              </Link>
+              <a
+                href={company.whatsappLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-press inline-flex items-center justify-center h-[52px] px-6 border-[1.5px] border-paper/50 text-paper font-display font-bold text-[13px] uppercase tracking-[0.06em] transition-colors hover:bg-paper/10 hover:border-paper"
+              >
+                WhatsApp Us
+              </a>
+            </div>
           </Reveal>
         </div>
       </section>

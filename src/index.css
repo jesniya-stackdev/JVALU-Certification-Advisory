@@ -205,3 +205,13 @@ select:focus-visible {
   -webkit-mask-image: radial-gradient(520px 360px at 78% 38%, #000 0%, transparent 100%);
   mask-image: radial-gradient(520px 360px at 78% 38%, #000 0%, transparent 100%);
 }
+
+/* About page hero: faint grid fading out from the right */
+.about-hero-grid {
+  background-image:
+    linear-gradient(rgba(247, 245, 240, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(247, 245, 240, 0.06) 1px, transparent 1px);
+  background-size: 64px 64px;
+  -webkit-mask-image: radial-gradient(700px 480px at 78% 45%, #000, transparent 75%);
+  mask-image: radial-gradient(700px 480px at 78% 45%, #000, transparent 75%);
+}
