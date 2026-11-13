@@ -32,9 +32,12 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  // Pages with a light hero get a visible line under the nav so it reads as a separate bar.
+  const navBorder = location.pathname === '/services/case-studies' ? 'border-b border-bronze-500/60' : ''
+
   return (
     <header
-    className={`fixed top-0 z-50 w-full transition-all duration-300 ${
+    className={`fixed top-0 z-50 w-full transition-all duration-300 ${navBorder} ${
   scrolled
     ? 'bg-paper/95 backdrop-blur-md shadow-[0_1px_0_rgba(26,31,30,0.08)]'
     : 'bg-paper/80 backdrop-blur-sm'

@@ -27,14 +27,14 @@ function CategoryCard({ icon: Icon, index, title, className = '', style }) {
   return (
     <div
       style={style}
-      className={`bg-white border border-teal-500/12 border-t-[3px] border-t-bronze-500 px-[22px] py-5 flex items-start gap-4 shadow-[0_18px_40px_-18px_rgba(16,38,34,0.35)] ${className}`}
+      className={`group bg-white border border-teal-500/12 border-t-[3px] border-t-bronze-500 px-[22px] py-5 flex items-start gap-4 shadow-[0_18px_40px_-18px_rgba(16,38,34,0.35)] transition-[transform,box-shadow,background-color] duration-300 ease-out hover:bg-teal-500 hover:-translate-y-1 hover:shadow-[0_24px_36px_-18px_rgba(16,38,34,0.55)] motion-reduce:transition-none motion-reduce:hover:transform-none ${className}`}
     >
-      <span className="shrink-0 w-[46px] h-[46px] rounded-full bg-[#F8F0DD] flex items-center justify-center text-bronze-600">
+      <span className="shrink-0 w-[46px] h-[46px] rounded-full bg-[#F8F0DD] flex items-center justify-center text-bronze-600 transition-colors duration-300 group-hover:bg-bronze-500 group-hover:text-teal-700">
         <Icon size={22} strokeWidth={1.75} />
       </span>
       <div>
-        <p className="font-mono text-[11px] tracking-[0.14em] text-bronze-600">CATEGORY {String(index + 1).padStart(2, '0')}</p>
-        <h3 className="font-display font-bold text-[17px] leading-snug text-teal-700 mt-1.5">{title}</h3>
+        <p className="font-mono text-[11px] tracking-[0.14em] text-bronze-600 transition-colors duration-300 group-hover:text-bronze-400">CATEGORY {String(index + 1).padStart(2, '0')}</p>
+        <h3 className="font-display font-bold text-[17px] leading-snug text-teal-700 mt-1.5 transition-colors duration-300 group-hover:text-paper">{title}</h3>
       </div>
     </div>
   )
@@ -77,7 +77,7 @@ export default function CaseStudiesHero({ service }) {
             </Link>
             <div className="w-16 h-[3px] bg-bronze-500 mb-5" />
             <p className="eyebrow text-bronze-600">{service.eyebrow}</p>
-            <h1 className="mt-4 mb-5 font-display font-extrabold text-5xl sm:text-6xl xl:text-7xl leading-[1.02] tracking-tight text-teal-700">
+            <h1 className="mt-4 mb-5 font-playfair font-extrabold text-5xl sm:text-6xl xl:text-7xl leading-[1.05] tracking-[-0.01em] text-teal-700">
               {service.name}
             </h1>
             <p className="text-teal-600/85 text-lg leading-relaxed max-w-md">{service.summary}</p>
