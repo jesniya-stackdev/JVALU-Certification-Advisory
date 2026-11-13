@@ -1,61 +1,97 @@
 import React, { useEffect, useRef } from 'react'
 
 // Muted background video for a section. It plays while the section is on screen and pauses when
-// it scrolls away. The clip is a short camera move, so a hard loop would show a visible jump:
-// instead the picture fades out just before the end and fades back in as it restarts.
-// Shows a still frame only when the visitor prefers reduced motion.
-const FADE_SECONDS = 0.6
+// it scrolls away. The clip is a short camera move, so it is shown twice, stacked: just before the
+// first copy ends the second one fades in on top and carries on from the start. The picture never
+// freezes or jumps, and the loop is slow and gentle. A still frame is shown when the visitor
+// prefers reduced motion.
+const FADE_MS = 1600
 
-export default function SectionVideo({ src, speed = 0.6 }) {
-  const ref = useRef(null)
+export default function SectionVideo({ src, speed = 0.35 }) {
+  const aRef = useRef(null)
+  const bRef = useRef(null)
 
   useEffect(() => {
-    const video = ref.current
-    if (!video) return
+    const a = aRef.current
+    const b = bRef.current
+    if (!a || !b) return
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
 
-    video.playbackRate = speed
+    a.playbackRate = speed
+    b.playbackRate = speed
+    let active = a
     let visible = false
+    let raf = 0
+    let resetTimer = 0
 
-    const fadeOutIfEnding = () => {
-      const remaining = video.duration - video.currentTime
-      if (video.duration && remaining <= FADE_SECONDS * speed + 0.05) video.style.opacity = '0'
+    const swap = () => {
+      const outgoing = active
+      const incoming = active === a ? b : a
+      active = incoming
+      incoming.currentTime = 0.1
+      incoming.style.transition = 'none'
+      incoming.style.opacity = '0'
+      incoming.style.zIndex = '2'
+      outgoing.style.zIndex = '1'
+      incoming.play().catch(() => {})
+      // let the zero opacity apply, then fade in
+      requestAnimationFrame(() =>
+        requestAnimationFrame(() => {
+          incoming.style.transition = `opacity ${FADE_MS}ms ease-in-out`
+          incoming.style.opacity = '1'
+        })
+      )
+      window.clearTimeout(resetTimer)
+      resetTimer = window.setTimeout(() => {
+        outgoing.pause()
+        outgoing.currentTime = 0.1
+      }, FADE_MS + 100)
     }
-    const restart = () => {
-      video.currentTime = 0.1
-      video.style.opacity = '1'
-      if (visible) video.play().catch(() => {})
+
+    const tick = () => {
+      if (visible && active.duration) {
+        const remainingMs = ((active.duration - active.currentTime) / speed) * 1000
+        if (remainingMs <= FADE_MS) swap()
+      }
+      raf = requestAnimationFrame(tick)
     }
 
     const observer = new IntersectionObserver(
       ([entry]) => {
         visible = entry.isIntersecting
-        if (visible) video.play().catch(() => {})
-        else video.pause()
+        if (visible) active.play().catch(() => {})
+        else {
+          a.pause()
+          b.pause()
+        }
       },
       { threshold: 0.2 }
     )
-    observer.observe(video)
-    video.addEventListener('timeupdate', fadeOutIfEnding)
-    video.addEventListener('ended', restart)
+    observer.observe(a)
+    raf = requestAnimationFrame(tick)
     return () => {
       observer.disconnect()
-      video.removeEventListener('timeupdate', fadeOutIfEnding)
-      video.removeEventListener('ended', restart)
+      cancelAnimationFrame(raf)
+      window.clearTimeout(resetTimer)
     }
   }, [speed])
 
+  const common = {
+    muted: true,
+    playsInline: true,
+    preload: 'auto',
+    className: 'absolute inset-0 w-full h-full object-cover',
+    'aria-hidden': 'true',
+  }
+
   return (
-    <video
-      ref={ref}
-      muted
-      playsInline
-      preload="auto"
-      className="absolute inset-0 w-full h-full object-cover transition-opacity ease-in-out"
-      style={{ transitionDuration: `${FADE_SECONDS * 1000}ms` }}
-      aria-hidden="true"
-    >
-      <source src={`${src}#t=0.1`} type="video/mp4" />
-    </video>
+    <div className="absolute inset-0 isolate overflow-hidden" aria-hidden="true">
+      <video ref={aRef} {...common} style={{ zIndex: 2 }}>
+        <source src={`${src}#t=0.1`} type="video/mp4" />
+      </video>
+      <video ref={bRef} {...common} style={{ opacity: 0, zIndex: 1 }}>
+        <source src={`${src}#t=0.1`} type="video/mp4" />
+      </video>
+    </div>
   )
 }
