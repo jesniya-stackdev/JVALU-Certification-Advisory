@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { ArrowRight, BadgeCheck, Calculator, ClipboardCheck, Factory, LineChart } from 'lucide-react'
+import { ArrowRight, ArrowUpRight, BadgeCheck, Calculator, ClipboardCheck, Factory, LineChart } from 'lucide-react'
 import Reveal from './Reveal'
 
 // Hero for the Case Studies page: the five case study categories as cards over a faint network backdrop.
@@ -81,19 +81,23 @@ export default function CaseStudiesHero({ service }) {
               {service.name}
             </h1>
             <p className="text-teal-600/85 text-lg leading-relaxed max-w-md">{service.summary}</p>
-            <div className="mt-8 flex flex-col sm:flex-row gap-4">
+            <div className="mt-8 flex flex-col sm:flex-row sm:flex-wrap gap-4">
               <button
                 type="button"
                 onClick={scrollToCategories}
-                className="btn-press inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-teal-500 text-paper font-display font-semibold text-sm uppercase tracking-wide hover:bg-teal-600 transition-colors"
+                className="group btn-press inline-flex items-center justify-center gap-3 whitespace-nowrap pl-6 pr-4 py-3.5 bg-teal-500 text-paper font-display font-bold text-[13px] uppercase tracking-[0.06em] shadow-[inset_0_-3px_0_#B8924A,0_12px_24px_-12px_rgba(16,38,34,0.6)] transition-all duration-300 hover:bg-teal-700 hover:-translate-y-0.5 hover:shadow-[inset_0_-3px_0_#CBA75F,0_18px_28px_-12px_rgba(16,38,34,0.65)] motion-reduce:transition-none motion-reduce:hover:transform-none"
               >
-                Explore Our Work <ArrowRight size={16} />
+                Explore Our Work
+                <span className="flex items-center justify-center w-7 h-7 rounded-full bg-bronze-500 text-teal-700 transition-transform duration-300 group-hover:translate-x-1 motion-reduce:transition-none">
+                  <ArrowRight size={15} strokeWidth={2.5} />
+                </span>
               </button>
               <Link
                 to="/contact"
-                className="btn-press inline-flex items-center justify-center gap-2 px-7 py-3.5 border border-teal-500 text-teal-500 font-display font-semibold text-sm uppercase tracking-wide hover:bg-teal-500/5 transition-colors"
+                className="group btn-press inline-flex items-center justify-center gap-2.5 whitespace-nowrap px-6 py-3.5 border-[1.5px] border-teal-500 bg-white/50 text-teal-500 font-display font-bold text-[13px] uppercase tracking-[0.06em] shadow-[inset_0_-3px_0_transparent] transition-all duration-300 hover:bg-teal-500 hover:text-paper hover:-translate-y-0.5 hover:shadow-[inset_0_-3px_0_#B8924A,0_18px_28px_-12px_rgba(16,38,34,0.5)] motion-reduce:transition-none motion-reduce:hover:transform-none"
               >
                 Discuss A Project
+                <ArrowUpRight size={18} strokeWidth={2.25} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 motion-reduce:transition-none" />
               </Link>
             </div>
           </Reveal>

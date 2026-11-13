@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
-import { Menu, X, Phone, Search } from 'lucide-react'
+import { Menu, X, Phone, Search, ArrowRight } from 'lucide-react'
 import { company, services } from '../data/content'
 import logoTeal from '../assets/logo-teal.png'
 import logoWhite from '../assets/logo-white.png'
@@ -49,12 +49,12 @@ export default function Navbar() {
           <img
             src={logoTeal}
             alt="JVALU — Certification & Evaluation"
-            className="h-14 sm:h-16 md:h-20 w-auto object-contain"
+            className="h-14 sm:h-16 md:h-20 lg:h-16 xl:h-20 w-auto object-contain"
           />
         </Link>
 
         {/* Desktop nav */}
-        <div className="hidden lg:flex items-center gap-10">
+        <div className="hidden lg:flex items-center gap-5 xl:gap-10">
           {navLinks.map((link) =>
             link.label === 'Services' ? (
               <div
@@ -122,16 +122,21 @@ export default function Navbar() {
             href={ICV_TRACKING_URL}
             target="_blank"
             rel="noopener noreferrer"
-           className="btn-press inline-flex items-center gap-2 px-5 py-2.5 border border-teal-600 text-teal-600 text-sm font-display font-semibold tracking-wide uppercase hover:bg-sage transition-colors"
+           className="group btn-press inline-flex items-center gap-2.5 h-11 whitespace-nowrap pl-3 pr-4 xl:pr-5 border-[1.5px] border-teal-500 bg-white/50 text-teal-500 text-[13px] font-display font-bold tracking-[0.06em] uppercase transition-all duration-300 hover:bg-teal-500 hover:text-paper hover:-translate-y-0.5 hover:shadow-[0_12px_20px_-12px_rgba(16,38,34,0.55)] motion-reduce:transition-none motion-reduce:hover:transform-none"
           >
-            <Search size={16} />
+            <span className="flex items-center justify-center w-6 h-6 rounded-full bg-sage text-teal-500 transition-colors duration-300 group-hover:bg-bronze-500 group-hover:text-teal-700">
+              <Search size={13} strokeWidth={2.5} />
+            </span>
             ICV Tracking
           </a>
           <Link
             to="/contact"
-            className="btn-press ml-1 inline-flex items-center px-5 py-2.5 bg-teal-500 text-paper text-sm font-display font-semibold tracking-wide uppercase hover:bg-teal-600 transition-colors"
+            className="group btn-press ml-1 inline-flex items-center gap-2.5 h-11 whitespace-nowrap pl-4 xl:pl-5 pr-3 bg-teal-500 text-paper text-[13px] font-display font-bold tracking-[0.06em] uppercase shadow-[inset_0_-3px_0_#B8924A] transition-all duration-300 hover:bg-teal-700 hover:-translate-y-0.5 hover:shadow-[inset_0_-3px_0_#CBA75F,0_12px_20px_-12px_rgba(16,38,34,0.6)] motion-reduce:transition-none motion-reduce:hover:transform-none"
           >
             Request Consultation
+            <span className="flex items-center justify-center w-6 h-6 rounded-full bg-bronze-500 text-teal-700 transition-transform duration-300 group-hover:translate-x-0.5 motion-reduce:transition-none">
+              <ArrowRight size={13} strokeWidth={2.5} />
+            </span>
           </Link>
         </div>
 
@@ -149,7 +154,7 @@ export default function Navbar() {
       {/* Mobile menu */}
       <div
         className={`lg:hidden overflow-hidden transition-all duration-300 bg-paper border-t border-teal-500/10 ${
-          open ? 'max-h-[28rem]' : 'max-h-0'
+          open ? 'max-h-[34rem]' : 'max-h-0'
         }`}
       >
         <div className="px-5 py-5 flex flex-col gap-1">
@@ -178,15 +183,21 @@ export default function Navbar() {
               href={ICV_TRACKING_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 py-3 border border-teal-500 text-teal-500 font-display font-semibold text-sm uppercase tracking-wide"
+              className="flex items-center justify-center gap-2.5 py-3.5 border-[1.5px] border-teal-500 bg-white/60 text-teal-500 font-display font-bold text-sm uppercase tracking-[0.06em] active:bg-teal-500 active:text-paper transition-colors"
             >
-              <Search size={16} /> ICV Tracking
+              <span className="flex items-center justify-center w-6 h-6 rounded-full bg-sage text-teal-500">
+                <Search size={13} strokeWidth={2.5} />
+              </span>
+              ICV Tracking
             </a>
             <Link
               to="/contact"
-              className="flex items-center justify-center py-3 bg-teal-500 text-paper font-display font-semibold text-sm uppercase tracking-wide"
+              className="flex items-center justify-center gap-2.5 py-3.5 bg-teal-500 text-paper font-display font-bold text-sm uppercase tracking-[0.06em] shadow-[inset_0_-3px_0_#B8924A] active:bg-teal-700 transition-colors"
             >
               Request Consultation
+              <span className="flex items-center justify-center w-6 h-6 rounded-full bg-bronze-500 text-teal-700">
+                <ArrowRight size={13} strokeWidth={2.5} />
+              </span>
             </Link>
           </div>
         </div>
