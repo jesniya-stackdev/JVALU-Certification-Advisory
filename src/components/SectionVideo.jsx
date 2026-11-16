@@ -7,7 +7,7 @@ import React, { useEffect, useRef } from 'react'
 // prefers reduced motion.
 const FADE_MS = 1600
 
-export default function SectionVideo({ src, speed = 0.35 }) {
+export default function SectionVideo({ src, speed = 0.75 }) {
   const aRef = useRef(null)
   const bRef = useRef(null)
 
