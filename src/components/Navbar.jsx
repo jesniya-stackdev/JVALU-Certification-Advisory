@@ -6,7 +6,7 @@ import logoTeal from '../assets/logo-teal.png'
 import logoWhite from '../assets/logo-white.png'
 import ServiceIcon from './ServiceIcon'
 
-const ICV_TRACKING_URL = 'https://jvalu-icv-web.vercel.app/'
+const ICV_TRACKING_URL = 'https://tracking.jvalu.ae'
 
 const navLinks = [
   { to: '/', label: 'Home' },
